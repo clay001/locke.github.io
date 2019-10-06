@@ -1,107 +1,34 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+---
+layout: default
+---
 
-<head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<main id="scroll" class="home" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+    {% for post in site.posts %}
+        <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+                <a class="datetime" href="{{ post.url | prepend: site.baseurl }}">
+                    <meta itemprop="datePublished" content="{{post.date}}">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">
+                        <span class="day">
+                            {{ post.date | date: "%d" }}
+                        </span>
+                        <span class="month-year">
+                            {{ post.date | date: "%B %Y" }}
+                        </span>
+                    </time>
+                </a>
+                <div class="content">
+                    <a href="{{ post.url | prepend: site.baseurl }}"><h2 class="post-title" itemprop="name">{{ post.title }}</h2></a>
+                    <p class="description">
+                        {{ post.content | strip_html | truncatewords:40 }}
+                        <a href="{{ post.url | prepend: site.baseurl }}" class="link">Read more about {{post.title}}</a>
+                    </p>
 
-<title> Zheng Lab's website</title>
-
-<link rel="stylesheet" href="style.css" type="text/css" />
-<link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-
-</head>
-
-
-<body>
-<div id="pageHeader">
-
-	<div id="title">
-		<h1>Zhang's lab</h1>
-		<h2>School of Life Science<br> ShanghaiTech University </h2>
-	</div>
-	<div id="navcontainer">
-			<ul>
-				<li><a href="index.html"> <font color=	#060606>HOME</font></a></li>
-			    <li><a href="members.html"><font color=#060606>MEMBERS</font></a></li>
-				<li><a href="pub.html"><font color=#060606>PUBLICATIONS</font></a></li>		
-				<li><a href="teach.html"><font color= #060606>TEACHING</font></a></li>
-				<li><a href="Opening.html"><font color=#BA4A00>Opening</font></a></li>
-				<li><a href="LabFun.html"><font color=#060606>LabFun</font></a></li>
-			</ul>
-	</div>
-		<div id="topbar"></div>	
-		<div id="headerBottomGrad">
-    	<img src="./image/bottom_grad.png" alt="" style="width: 1008px; height: 5px;">
-	  </div>		
-</div>
-
-
-
-
-<div id="container" >
-
-<div id="sidebarContainer">
-	<div id="sidebar">				
-	<!--
-		<h1 class="sideHeader">Welcome</h1>
-	-->
-			<img alt="Zhang's Lab"  src="image/Precision_med.jpg" width="300" style = "Padding-bottom: 0px;Padding-left: 0px;Padding-right: 10px";> 
-	
-		<table>
-		       									<tr><td>
-		       											<span style="font-weight:bold;"> Contact: <br></span>
-		       												 School of Life Science <br>
-		       												 Shanghai Tech University	 <br>	
-		       												 Haike Road 100	 <br>
-		       												 201210   		 	
-		       									</td></tr>
-		       									<tr><td>
-		       											<span style="font-weight:bold; ">E-mail: <br></span>
-		       											zhangly [at] shanghaitech [dot] edu [dot] cn 
-		       									</td></tr>		
-		       														
-		       						</table>	
-	
-	</div>
-</div>
-
-<div id="contentContainer" >
-			<div id="content" >
-				
-
-				The research of our lab focuses on the interpreting the meaning of biological data, especially in the area of percision medicine. The long term goal of our lab is to derive mathematic model that can explain and predict the biological phenomena. 	 
-					<br>
-					<br>
-				More specifically
-				1. We are interested in developing DNA/RNA/epigenetic based Biomarkers to characterize subgroups related to disease (mostly cancer for now) subtype and treatment response, and understand the underlying biology by integrating analyses. 
-				<br>
-				<br>
-				2. We are interested in collaborating with other labs to eludicate the mechanisms related to human disease. We currently have extensive collaboration with <a href="http://www.bu.edu/dental/profile/ruslan-afasizhev/" target="_blank"><font face="Georgia">Ruslan Afasizhev</font></a> on understanding the mechanisms of mitochondria transcription regulation in Trypanosoma brucei.
-				<br>
-				<br>
-				3. We are also interested in studying structural variations in a quatative manner using Yeast as a model organism. 
-					<br>
-					<br>
-				Currently, Lab has a openning for a postdoc position and a technician/lab manager position available. 
-							</div>
-	</div>
-
-
-				
-
-</div>
-			
-<div class="clearer"></div>
-
-		<div id="footer">
-		<footer> <p>Last modified in June 2017</p></footer>
-		</div>
-
-		
-
-</body>
-
-</html>
+                    <div class="tags">
+                        {% for tag in post.tags %}
+                            <a href="{{ site.baseurl }}/tags/#{{tag | slugify }}">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+        </article>
+    {% endfor %}
+</main>
