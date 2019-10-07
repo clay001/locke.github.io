@@ -1,18 +1,31 @@
 # Site settings
 title: Locke Wang - Simple World
 description: A blog about knowledge sharing
+
+
+#url: "https://willianjusten.com.br"
+
 baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "https://lockewang.com.br" # the base hostname & protocol for your site e.g. http://lockewang.com.br
+#url: "https://willianjusten.com.br"
+url: "https://clay001.github.io/blog/" # the base hostname & protocol for your site e.g. http://lockewang.com.br
 
 # User settings
-username: Locke wang
+username: Locke Wang
 user_description: A Student
-user_title: Developer
+user_title: Student/Developer
+
 email: wangxin51@outlook.com
-twitter_username: lorem_ipsum
+
+# weibo
+twitter_username: lockewang
+
 github_username:  clay001
-gplus_username:  lorem_ipsum
-disqus_username: lorem_ipsum
+
+#
+gplus_username:  Xin Wang
+
+#leetcode
+disqus_username: lockewang
 
 # Build settings
 markdown: kramdown
