@@ -3,7 +3,7 @@ layout: post
 title: "Welcome to my blog"
 date: 2019-10-01 01:23:43
 image: '/assets/img/'
-description: 'First posts'
+description: 'First post'
 tags:
 - fresh 
 - top
