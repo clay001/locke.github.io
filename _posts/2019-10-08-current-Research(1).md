@@ -15,7 +15,7 @@ twitter_text: 'New research progress of Locke!'
 
 ## Preface 
 While waiting for transfering blog articles from other platform, I think create more is more important. \\
-Currently I devote myself to research, work with professor [Heyrim Cho](https://heyrim.github.io)(University of California, Riverside) and hope to have a publication at the end of this year. So I start to write this series of blogs, aim to record and clear up my thoughts, also can be seen as my psychological journel, the article's birth witness and evidence.\\
+Currently I devote myself to research, work with a very nice professor [Heyrim Cho :) ](https://heyrim.github.io)(University of California, Riverside) and hope to have a publication at the end of this year. So I start to write this series of blogs, aim to record and clear up my thoughts, also can be seen as my psychological journel, the article's birth witness and evidence.\\
 Finally, hope it can provide some inspirations to readers.
 ## First paper in RNA velocity
 We all know RNA-seq, but this approach captures only a static snapshot at a point in time. When we want to analyze time-resolved phenomena such as embryogenesis or tissue regeneration, we need something more.  \\
@@ -39,6 +39,7 @@ So what is cellranger? [Cellranger](https://support.10xgenomics.com/single-cell-
 - cellranger count: takes FASTQ files from cellranger mkfastq and performs alignment, filtering, barcode counting, and UMI counting. Can generate count matrices( comonly row represents genes and column represents cells,), determine clusters, and perform gene expression analysis. 
 - cellranger aggr: aggregates outputs from multiple runs of cellranger count, normalizing those runs to the same sequencing depth and then recomputing the counts matrices and analysis on the combined data. 
 - cellranger reanalyze: takes count matrices produced by cellranger count or cellranger aggr and reruns the dimensionality reduction, clustering, and gene expression algorithms using tunable parameter settings.
+Output is delivered in standard BAM, MEX, CSV, ***HDF5*** and HTML formats that are augmented with cellular information.
 
-
-
+## Velocity.py
+Finally we get the loom file we need, next step is to get velocity features. This paper provide a pipline to do these things with command lines, for more detail they provided two version, one is R version and another is python version. Here I choose python version. ....
