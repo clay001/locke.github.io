@@ -46,11 +46,11 @@ links:
   - title: Home
     url: /
   - title: Series
-    url: /series
+    url: /
   - title: Tags
-    url: /tags
+    url: /
   - title: About Me
-    url: /about
+    url: /
 
 # exclude my node related stuff
 exclude: ['package.json', 'src', 'node_modules']
