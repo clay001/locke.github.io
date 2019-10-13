@@ -2,9 +2,9 @@
 title: Locke Wang - Simple World
 description: A blog about knowledge sharing
 
-#baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 
-url: "https://clay001.github.io/blog" # the base hostname & protocol for your site e.g. http://lockewang.com.br
+url: "http://localhost:4000" # the base hostname & protocol for your site e.g. http://lockewang.com.br
 #url: "https://willianjusten.com.br"
 
 # User settings
