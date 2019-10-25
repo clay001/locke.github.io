@@ -48,7 +48,7 @@ links:
   - title: Tags
     url: /tags
   - title: About Me
-    url: /
+    url: https://drive.google.com/file/d/1jLnz0l33h7SKUAikMUw1JOpLmKK0y_K6/view?usp=sharing
 
 # exclude my node related stuff
 exclude: ['package.json', 'src', 'node_modules']

@@ -5,9 +5,79 @@
     <description>A blog about knowledge sharing</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 13 Oct 2019 12:11:13 +0800</pubDate>
-    <lastBuildDate>Sun, 13 Oct 2019 12:11:13 +0800</lastBuildDate>
+    <pubDate>Fri, 25 Oct 2019 11:56:50 +0800</pubDate>
+    <lastBuildDate>Fri, 25 Oct 2019 11:56:50 +0800</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Current research(2)</title>
+        <description>&lt;h2 id=&quot;what-we-can-do&quot;&gt;What we can do?&lt;/h2&gt;
+
+</description>
+        <pubDate>Fri, 25 Oct 2019 07:42:22 +0800</pubDate>
+        <link>http://localhost:4000/blog/current-Research(2)/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/current-Research(2)/</guid>
+        
+        <category>research</category>
+        
+        <category>PDE</category>
+        
+        <category>RNA velocity</category>
+        
+        
+        <category>research</category>
+        
+      </item>
+    
+      <item>
+        <title>Deep Learning SOTA</title>
+        <description>&lt;h2 id=&quot;recap&quot;&gt;Recap&lt;/h2&gt;
+
+&lt;p&gt;深度学习领域发展的非常快，里面有很多令人激动和兴奋的技术细节，我非常感兴趣。DL和ML的课我都有修过，但由于我最近的课题最近与前沿相去甚远，大概隔了半年多之后我发现很多当时弄的非常明白的理论基础和操作方法我都有些忘了，而且技术也一直在飞速发展，所以我觉得还是要不断保持学习。&lt;/p&gt;
+
+&lt;p&gt;这篇博文的目的就在于夯实记录一些非常重要的核心基础，同时贴近前沿，了解一些最新的技术突破。&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 23 Oct 2019 03:25:37 +0800</pubDate>
+        <link>http://localhost:4000/blog/DeepLearning_advanced/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/DeepLearning_advanced/</guid>
+        
+        <category>Deep Learning</category>
+        
+        <category>Machine Learning</category>
+        
+        
+        <category>Deep Learning</category>
+        
+        <category>Machine Learning</category>
+        
+      </item>
+    
+      <item>
+        <title>C++ learning</title>
+        <description>&lt;h2 id=&quot;hpp和h的区别&quot;&gt;hpp和h的区别&lt;/h2&gt;
+
+&lt;p&gt;hpp（Header Plus Plus）是将.cpp的实现代码混入.h头文件当中，定义与实现都包含在同一文件，调用的时候只需要include该hpp文件即可&lt;/p&gt;
+
+&lt;p&gt;与xx.h类似，hpp是C++程序头文件。一般来说，xx.h里面只有声明，没有实现，而&lt;em&gt;.hpp里声明实现都有，后者可以减少.cpp的数量。xx.h里面可以有using namespace std，而&lt;/em&gt;.hpp里则没有。&lt;/p&gt;
+
+&lt;p&gt;但要注意的是，hpp中不可以包含全局对象和全局函数&lt;/p&gt;
+
+&lt;h2 id=&quot;取余运算上的不同&quot;&gt;取余运算上的不同&lt;/h2&gt;
+
+&lt;p&gt;和python不同，在C++中 -1%10 的结果并不是9，而是-1。所以在我程序中碰到过的一个轮盘锁问题的时候，需要实现0负方向转动的结果是9，这时候就得再做一层操作，我当时的选择是如果是负数就用10去减一次&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 19 Oct 2019 23:22:44 +0800</pubDate>
+        <link>http://localhost:4000/blog/C++-learning/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/C++-learning/</guid>
+        
+        <category>C++</category>
+        
+        
+        <category>Language</category>
+        
+      </item>
     
       <item>
         <title>Current research(1)</title>

@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "Current research(2)",
+      "category" : "research",
+      "tags"     : "research, PDE, and RNA velocity",
+      "url"      : "/blog/current-Research(2)/",
+      "date"     : "25 Oct 2019"
+    } ,
+  
+    {
+      "title"    : "Deep Learning SOTA",
+      "category" : "Deep LearningMachine Learning",
+      "tags"     : "Deep Learning and Machine Learning",
+      "url"      : "/blog/DeepLearning_advanced/",
+      "date"     : "23 Oct 2019"
+    } ,
+  
+    {
+      "title"    : "C++ learning",
+      "category" : "Language",
+      "tags"     : "C++",
+      "url"      : "/blog/C++-learning/",
+      "date"     : "19 Oct 2019"
+    } ,
+  
+    {
       "title"    : "Current research(1)",
       "category" : "research",
       "tags"     : "research, PDE, and RNA velocity",
