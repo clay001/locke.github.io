@@ -5,15 +5,35 @@
     <description>A blog about knowledge sharing</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Oct 2019 13:21:53 +0800</pubDate>
-    <lastBuildDate>Fri, 25 Oct 2019 13:21:53 +0800</lastBuildDate>
+    <pubDate>Sat, 26 Oct 2019 21:44:05 +0800</pubDate>
+    <lastBuildDate>Sat, 26 Oct 2019 21:44:05 +0800</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
-        <title>Current research(2)</title>
-        <description>&lt;h2 id=&quot;what-we-can-do&quot;&gt;What we can do?&lt;/h2&gt;
+        <title>Deep Learning SOTA(2)</title>
+        <description>&lt;h2 id=&quot;增强学习&quot;&gt;增强学习&lt;/h2&gt;
 
 </description>
+        <pubDate>Fri, 25 Oct 2019 16:12:47 +0800</pubDate>
+        <link>http://localhost:4000/blog/DeepLearning_advanced(2)/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/DeepLearning_advanced(2)/</guid>
+        
+        <category>Deep Learning</category>
+        
+        <category>Machine Learning</category>
+        
+        
+        <category>Reinforcement Learning</category>
+        
+        <category>Deep Learning</category>
+        
+        <category>Machine Learning</category>
+        
+      </item>
+    
+      <item>
+        <title>Current research(2)</title>
+        <description>&lt;h2 id=&quot;mouse-hippocampus&quot;&gt;Mouse hippocampus&lt;/h2&gt; &lt;p&gt;It is related with brain memory.&lt;/p&gt; &lt;p&gt;The embedding was computed using pagoda2, the distance is determined as $1-r_{ij}$ (r is pearson linear correlation of cell i,j on the first 100 principle compoinents of the top 3000 variable genes). Cluster was performed using Louvain community detection algorithm on the nearest neighbor cell graph.&lt;/p&gt; &lt;p&gt;Explore with code:&lt;/p&gt; &lt;p&gt;if %matplotlib inline turns error, you should put in front of the matplotlib import command, because some default setting things in jupyter notebook.&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/Research(2)/procedure.png?raw=true&quot; alt=&quot;procedure&quot; /&gt;&lt;/p&gt; &lt;p&gt;There is two steps which I think is the most important, one is SVR, another...</description>
         <pubDate>Fri, 25 Oct 2019 07:42:22 +0800</pubDate>
         <link>http://localhost:4000/blog/current-Research(2)/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/current-Research(2)/</guid>
@@ -30,22 +50,34 @@
       </item>
     
       <item>
-        <title>Deep Learning SOTA</title>
+        <title>Deep Learning SOTA(1)</title>
         <description>&lt;h2 id=&quot;recap&quot;&gt;Recap&lt;/h2&gt;
 
 &lt;p&gt;深度学习领域发展的非常快，里面有很多令人激动和兴奋的技术细节，我非常感兴趣。DL和ML的课我都有修过，但由于我最近的课题最近与前沿相去甚远，大概隔了半年多之后我发现很多当时弄的非常明白的理论基础和操作方法我都有些忘了，而且技术也一直在飞速发展，所以我觉得还是要不断保持学习。&lt;/p&gt;
 
 &lt;p&gt;这篇博文的目的就在于夯实记录一些非常重要的核心基础，同时贴近前沿，了解一些最新的技术突破。&lt;/p&gt;
 
+&lt;h2 id=&quot;图神经网络&quot;&gt;图神经网络&lt;/h2&gt;
+
+&lt;p&gt;其实我早在19年年初就已经关注到了GNN，很多大牛都预言它将是未来的潮流，我也加入了一些图神经网络的讨论小组，原本想要蹭蹭风口，但由于条件限制，在没有研究环境的情况下也没有时间去做这些事情。&lt;/p&gt;
+
+&lt;p&gt;原本我觉得GNN应该是做一些社交网络之类的推理课题，因为在医疗健康领域数据是非常昂贵的，想要做到大数据上DL几乎是不太可能的，但近期无监督学习，数据增强，迁移学习之类的兴起让我似乎看见了些许希望。图本身实在是太强大了，保罗万象，几乎所有的科学问题都能被抽象到图上。而且都说ICML是未来研究热点的标杆，如今GNN在科研舞台上风生水起，抱着对未知本能的好奇，我决定好好了解一下。&lt;/p&gt;
+
+&lt;p&gt;图灵奖得主、贝叶斯网络之父Judea Pearl曾经发文指出，当前的机器学习系统几乎完全以统计学或盲模型的方式运行，不能作为强AI的基础。这点我非常认同，现在的媒体吹的太厉害了，我之前也是信以为真，但自从接触深度学习的理论之后，我也是认为这种小打小闹虽然可以现象级地解决一些大数据的问题，但想要达到科幻片里的未来世界是不可能的。他老人家认为突破口在于“因果革命”。&lt;/p&gt;
+
+&lt;p&gt;GNN号称完成了1.DL应用过渡到非欧几里得空间，2.赋予DL以因果推理的能力这两大壮举。&lt;/p&gt;
+
 </description>
         <pubDate>Wed, 23 Oct 2019 03:25:37 +0800</pubDate>
-        <link>http://localhost:4000/blog/DeepLearning_advanced/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/DeepLearning_advanced/</guid>
+        <link>http://localhost:4000/blog/DeepLearning_advanced(1)/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/DeepLearning_advanced(1)/</guid>
         
         <category>Deep Learning</category>
         
         <category>Machine Learning</category>
         
+        
+        <category>Graph Neural Network</category>
         
         <category>Deep Learning</category>
         

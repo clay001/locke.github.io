@@ -1,0 +1,36 @@
+I"7<h2 id="mouse-hippocampus">Mouse hippocampus</h2>
+
+<p>It is related with brain memory.</p>
+
+<p>The embedding was computed using pagoda2, the distance is determined as $1-r_{ij}$ (r is pearson linear correlation of cell i,j on the first 100 principle compoinents of the top 3000 variable genes). Cluster was performed using Louvain community detection algorithm on the nearest neighbor cell graph.</p>
+
+<p>Explore with code:</p>
+
+<p>if %matplotlib inline turns error, you should put in front of the matplotlib import command, because some default setting things in jupyter notebook.</p>
+
+<p><img src="https://cn.bing.com/images/search?view=detailV2&amp;ccid=1oc2rJut&amp;id=913544700E2FC0C194BE97538485F5E55183E814&amp;thid=OIP.1oc2rJutDZo76YWgdGMOTQHaCh&amp;mediaurl=https%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fen%2fthumb%2ff%2ff4%2fBaidu.svg%2f1200px-Baidu.svg.png&amp;exph=410&amp;expw=1200&amp;q=baidu&amp;simid=608043230854972263&amp;selectedIndex=0&amp;ajaxhist=0" alt="procedure" /></p>
+
+<p>There is two steps which I think is the most important, one is SVR, another is KNN.</p>
+
+<p>After KNN, we will get:</p>
+
+<ul>
+  <li>knn contiguity matrix</li>
+  <li>the weights used for the smoothing</li>
+  <li>smoothed spliced</li>
+  <li>smoothed unspliced</li>
+</ul>
+
+<p>Then use Sx and Ux to fit gamma to get the kinetic equations, plot the predict result for checking. Calculate the transition probability (here I fixed a bug about the stacking), project the direction (figure with small arrows) and use regular grid and gaussian kernel to smooth (figure with big arrows). We can access these two things in <strong>delta_embedding</strong> and <strong>flow</strong></p>
+
+<p><img src="https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/Research(2)/small_arrow.png" alt="small_arrow" /></p>
+
+<p><img src="https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/Research(2)/big_arrow.png" alt="big_arrow" /></p>
+
+<p>Then is some different plot styles and some particular regions zoom in module.(To be continued…. )</p>
+
+<p>$sx = sx +1$</p>
+
+<p><img src="" alt="" /></p>
+
+:ET

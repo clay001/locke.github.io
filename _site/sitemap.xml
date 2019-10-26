@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	
 	  <url>
+		<loc>http://localhost:4000/blog/DeepLearning_advanced(2)/</loc>
+	  </url>
+	
+	  <url>
 		<loc>http://localhost:4000/blog/current-Research(2)/</loc>
 	  </url>
 	
 	  <url>
-		<loc>http://localhost:4000/blog/DeepLearning_advanced/</loc>
+		<loc>http://localhost:4000/blog/DeepLearning_advanced(1)/</loc>
 	  </url>
 	
 	  <url>

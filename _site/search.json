@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Deep Learning SOTA(2)",
+      "category" : "Reinforcement LearningDeep LearningMachine Learning",
+      "tags"     : "Deep Learning and Machine Learning",
+      "url"      : "/blog/DeepLearning_advanced(2)/",
+      "date"     : "25 Oct 2019"
+    } ,
+  
+    {
       "title"    : "Current research(2)",
       "category" : "research",
       "tags"     : "research, PDE, and RNA velocity",
@@ -9,10 +17,10 @@
     } ,
   
     {
-      "title"    : "Deep Learning SOTA",
-      "category" : "Deep LearningMachine Learning",
+      "title"    : "Deep Learning SOTA(1)",
+      "category" : "Graph Neural NetworkDeep LearningMachine Learning",
       "tags"     : "Deep Learning and Machine Learning",
-      "url"      : "/blog/DeepLearning_advanced/",
+      "url"      : "/blog/DeepLearning_advanced(1)/",
       "date"     : "23 Oct 2019"
     } ,
   

@@ -23,6 +23,7 @@ We all know RNA-seq, but this approach captures only a static snapshot at a poin
 RNA abundance is a powerful indicator of the state of individual cells. This paper use this indicator to define a new feature called RNA velocity—the time derivative of the gene expression state.
 This feature can be directly estimated by distinguishing between unspliced and spliced mRNAs in common single-cell RNA sequencing protocols. \\
 Here I captured some important points and listed together:
+
 - RNA velocity is a high-dimensional vector that predicts the future state of individual cells on a timescale of hours. 
 - This paper validate its accuracy in the neural crest lineage, demonstrate its use on multiple published datasets and technical platforms, reveal the branching lineage tree of the developing mouse hippocampus, and examine the kinetics of transcription in human embryonic brain.
 - We expect RNA velocity to greatly aid the analysis of developmental lineages and cellular dynamics, particularly in humans.
@@ -45,7 +46,9 @@ Output is delivered in standard BAM, MEX, CSV, ***HDF5*** and HTML formats that 
 
 Then to annotate reads following some rules (detail in paper)
 
-supplement: BCL(single cell sequence result file) --> fasta(after referencing) --> fastq(fasta plus quality control) --> SAM(after reads mapping) <--> BAM(compressed binary format, can be decompressed by samtool)*
+---------------------------------------------------------------------------------------------
+
+supplement information: *BCL(single cell sequence result file) --> fasta(after referencing) --> fastq(fasta plus quality control) --> SAM(after reads mapping) <--> BAM(compressed binary format, can be decompressed by samtool)*
 
 *some extensible text saving format: XML, CSS, JSON, JavaScript, Java, SQL, HTML*
 
@@ -60,5 +63,5 @@ supplement: BCL(single cell sequence result file) --> fasta(after referencing) -
 ## Velocity.py
 Finally we get the loom file we need, and with the pre-built packages can group the counts of the reads into three categories: spliced, unspliced and ambiguous.
 
-Next step is to get velocity features. This paper provide a framework to do these things with command lines. They provided two version, one is R version and another is python version. Here I choose python version. There are nine datasets and several analysis pipeline. We first focus on three of them, which I will descibe more in Current Research series(2). Go and check it: https://clay001.github.io/blog/current-Research(2)/
+Next step is to get velocity features. This paper provide a framework to do these things with command lines. They provided two version, one is R version and another is python version. Here I choose python version. There are nine datasets and several analysis pipeline. We first focus on three of them, which I will descibe more in Current Research series(2). Go and check it: [Current Research series(2)](https://clay001.github.io/blog/current-Research(2)/)
 
