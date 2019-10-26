@@ -58,5 +58,7 @@ supplement: BCL(single cell sequence result file) --> fasta(after referencing) -
 *GEO(gene expression Omnibus) -- GSE(whole project) -- GDS(platform) -- GSM(sample),  GPL(platform information)*
 
 ## Velocity.py
-Finally we get the loom file we need, next step is to get velocity features. This paper provide a pipline to do these things with command lines, for more detail they provided two version, one is R version and another is python version. Here I choose python version. There are nine datasets and several analysis pipeline. We first focus on three of them, which I will descibe more in Current Research series(2). Go and check it: https://clay001.github.io/blog/current-Research(2)/
+Finally we get the loom file we need, and with the pre-built packages can group the counts of the reads into three categories: spliced, unspliced and ambiguous.
+
+Next step is to get velocity features. This paper provide a framework to do these things with command lines. They provided two version, one is R version and another is python version. Here I choose python version. There are nine datasets and several analysis pipeline. We first focus on three of them, which I will descibe more in Current Research series(2). Go and check it: https://clay001.github.io/blog/current-Research(2)/
 
