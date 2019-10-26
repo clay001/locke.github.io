@@ -23,7 +23,7 @@ Explore with code:
 
 if %matplotlib inline turns error, you should put in front of the matplotlib import command, because some default setting things in jupyter notebook.
 
-![image-20191026160859943](/Users/wangxin/Library/Application Support/typora-user-images/image-20191026160859943.png)
+![image-20191026160859943](/Users/wangxin/github/blog/posts_picture/image-20191026160859943.png)
 
 There is two steps which I think is the most important, one is SVR, another is KNN. 
 
