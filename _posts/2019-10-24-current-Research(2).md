@@ -13,5 +13,13 @@ categories:
 twitter_text: 'New research progress of Locke!'
 ---
 
-##  What we can do?
+##  Mouse hippocampus
+
+It is related with brain memory.
+
+
+
+Code: if %matplotlib inline turns error, you should put in front of the matplotlib import command, because some default setting things in jupyter notebook.
+
+
 
