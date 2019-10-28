@@ -17,7 +17,7 @@ twitter_text: 'New research progress of Locke!'
 
 It is related with brain memory. 
 
-The embedding was computed using pagoda2, the distance is determined as $1-r_{ij}$ (r is pearson linear correlation of cell i,j on the first 100 principle compoinents of the top 3000 variable genes). Cluster was performed using Louvain community detection algorithm on the nearest neighbor cell graph.
+The embedding was computed using [pagoda2](https://www.jianshu.com/p/f4d79b91d448) (pathway and gene set overdispersion analysis), which classifies cells based on known important signaling pathways to improve statistical effectiveness. The distance is determined as $1-r_{ij}$ (r is pearson linear correlation of cell i,j on the first 100 principle compoinents of the top 3000 variable genes). Cluster was performed using Louvain community detection algorithm on the nearest neighbor cell graph.
 
 Explore with code: 
 
