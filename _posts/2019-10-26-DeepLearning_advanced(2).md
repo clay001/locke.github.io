@@ -22,7 +22,7 @@ twitter_text: 'Follow me to study DL'
 
 为了使我们的自编码器能够真正地学到东西而不是简单的记忆，我们能想到可以减少bottleneck层的节点数。但其实即使只有一个隐藏层节点，只要有足够的capacity，模型依然可以记住训练数据。这时候稀疏自编码器(如下图)就十分有效
 
-![稀疏自编码器]()
+![稀疏自编码器](https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/SOTA(2)/sparse.png?raw=true)
 
 我们让模型选择性地去激活网络区域，同时对过度激活进行惩罚。可以加L1正则化，也可以用KL散度。
 
@@ -44,9 +44,25 @@ $$
 $$
 \mathcal{L}(x,\hat{x}) + \sum_{j} KL(q_j(z|x) || p(z))
 $$
-其中j代表维度，前一项代表重构误差，后一项代表分布的差异程度
+其中j代表维度，前一项代表重构误差，后一项代表分布的差异程度。
 
-既然我们假设先验是符合正态分布的，那么我们可以构建如下的网络结构：![model]() 中间输出的是两个描述均值和方差的向量，解码器该分布中进行采样，然后生成一个潜在矢量进行后续的重构
+既然我们假设先验是符合正态分布的，那么我们可以构建如下的网络结构：
+
+![model](https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/SOTA(2)/model.png?raw=true)
+
+ 中间输出的是两个描述均值和方差的向量，解码器该分布中进行采样，然后生成一个潜在矢量进行后续的重构。
+
+采样的过程应该是随机的，但是随机又无法进行梯度反传，所以需要用到一个技巧叫reparameterization trick（再参数化）。即先从单位高斯中随机采样ε，再通过潜在分布的均值μ和方差σ对其进行缩放 。
+
+![repara](https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/SOTA(2)/repara.png?raw=true)
+
+![repara2](https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/SOTA(2)/repara2.png?raw=true)
+
+在调试的过程中，可以尝试检查潜在空间的分布情况，或是一些样本的潜在维度，以了解分布的特征，同时相应地改变重构误差和KL散度项的权重：
+$$
+\mathcal{L}(x,\hat{x}) + \beta\sum_{j} KL(q_j(z|x) || N(0,1))
+$$
 
 
+[本文参考yuxianyu的博客，原文链接如下：[http://www.atyun.com/17888.html](http://www.atyun.com/17888.html)]
 
