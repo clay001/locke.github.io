@@ -5,9 +5,25 @@
     <description>A blog about knowledge sharing</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Oct 2019 14:14:12 +0800</pubDate>
-    <lastBuildDate>Tue, 29 Oct 2019 14:14:12 +0800</lastBuildDate>
+    <pubDate>Tue, 29 Oct 2019 16:29:44 +0800</pubDate>
+    <lastBuildDate>Tue, 29 Oct 2019 16:29:44 +0800</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>My Tech Diary</title>
+        <description>&lt;h2 id=&quot;git&quot;&gt;Git&lt;/h2&gt; &lt;p&gt;I know the git has version rollback function, but I didn’t care too much before, because I think I’ve already uploaded my file to github, if I just want the previous version back why not just download the file back from GitHub? And I always think that git pull can do this for me, but I was wrong, if I modified the file and ran with git pull, it doesn’t work.&lt;/p&gt; &lt;p&gt;Well, it is time to pay for my lazyness, I finally met this stupid situation, I messed it up and all I wanted is to get my...</description>
+        <pubDate>Tue, 29 Oct 2019 00:00:06 +0800</pubDate>
+        <link>http://localhost:4000/blog/My_Tech_Diary/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/My_Tech_Diary/</guid>
+        
+        <category>Thoughts</category>
+        
+        <category>Tips</category>
+        
+        
+        <category>Dairy</category>
+        
+      </item>
     
       <item>
         <title>Deep Learning SOTA(3)</title>

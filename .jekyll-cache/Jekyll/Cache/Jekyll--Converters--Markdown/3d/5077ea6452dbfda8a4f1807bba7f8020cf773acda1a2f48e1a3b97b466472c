@@ -1,4 +1,4 @@
-I"�<h2 id="recap">Recap</h2>
+I"�<h2 id="recap">Recap</h2>
 
 <p>The field of deep learning is developing very fast, and there are a lot of exciting technical details which I am really interested in. I have tooken both DL and ML lessons, but since my recent research topic is far from the frontier, I find that I have forgotten a lot of theoretical foundations and operation skill which I learned before. Therefore I think the best way is to keep learning.</p>
 
@@ -27,10 +27,12 @@
 <p>VAE以概率的方式描述潜在空间观察。因此，我们不再是输出单个值来描述每个潜在状态属性，而是用每个潜在属性的概率分布来描述。在decoder的时候再从每个状态分布中随机采样，生成一个向量作为解码器的输入。特别地，对于VAE的编码器又称之为recognition model，解码器称为generative model。</p>
 
 <p>假设我们的观测是由一个隐变量Z决定的，我们相当于是想计算$p(z|x)=\frac{p(x|z)p(z)}{p(x)}$ 其中分母通常是一个非常复杂的分布$p(x) = \int p(x|z)p(z)dz$，这时候我们用变分推断取去估计它，做法是记一个近似分布为$q(z|x)$, 我们要做的是使q尽可能地逼近真实的先验分布p(z), 也就是想让这两个分布之间的KL散度最小。变换一下也就是最大化下面的式子：
-<script type="math/tex">E_{q(z|x)}logp(x|z)- KL(q(z|x)||p(z))</script>
-然后encoder的过程我们就用q来把输入的x映射到隐藏空间z中，decoder则用likelihood$p(x|z)$再映射回$\hat{x}$。写成损失函数的形式就是：
-<script type="math/tex">\mathcal{L}(x,\hat{x}) + \sum_{j} KL(q_j(z|x) || p(z))</script>
-其中j代表维度，前一项代表重构误差，后一项代表分布的差异程度。</p>
+<script type="math/tex">E_{q(z|x)}logp(x|z)- KL(q(z|x)||p(z))</script></p>
+
+<p>然后encoder的过程我们就用q来把输入的x映射到隐藏空间z中，decoder则用likelihood$p(x|z)$再映射回$\hat{x}$。写成损失函数的形式就是：
+<script type="math/tex">\mathcal{L}(x,\hat{x}) + \sum_{j} KL(q_j(z|x) || p(z))</script></p>
+
+<p>其中j代表维度，前一项代表重构误差，后一项代表分布的差异程度。</p>
 
 <p>既然我们假设先验是符合正态分布的，那么我们可以构建如下的网络结构：</p>
 
@@ -47,6 +49,6 @@
 <p>在调试的过程中，可以尝试检查潜在空间的分布情况，或是一些样本的潜在维度，以了解分布的特征，同时相应地改变重构误差和KL散度项的权重：
 <script type="math/tex">\mathcal{L}(x,\hat{x}) + \beta\sum_{j} KL(q_j(z|x) || N(0,1))</script></p>
 
-<p>[本文参考yuxianyu的博客，原文链接如下：<a href="http://www.atyun.com/17888.html">http://www.atyun.com/17888.html</a>]</p>
+<p>[本文参考<a href="http://www.atyun.com/17888.html">yuxianyu</a>的博客]</p>
 
 :ET

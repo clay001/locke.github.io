@@ -1,0 +1,11 @@
+I"�<h2 id="git">Git</h2>
+
+<p>I know the git has version rollback function, but I didn’t care too much before, because I think I’ve already uploaded my file to github, if I just want the previous version back why not just download the file back from GitHub? And I always think that git pull can do this for me, but I was wrong, if I modified the file and ran  with git pull, it doesn’t work.</p>
+
+<p>Well, it is time to pay for my lazyness, I finally met this stupid situation, I messed it up and all I wanted is to get my previous file version back. <code class="highlighter-rouge">Git reset</code> saves me.</p>
+
+<p>You can use <code class="highlighter-rouge">git log</code> to view the commit history, Head indicates your current version, and use <code class="highlighter-rouge">git reset --hard commit_id</code> to get back to the past. Or you can use <code class="highlighter-rouge">git reflog</code> to view the command history and to jump to the future.</p>
+
+<h2 id="杂记">杂记</h2>
+
+:ET

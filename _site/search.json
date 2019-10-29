@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "My Tech Diary",
+      "category" : "Dairy",
+      "tags"     : "Thoughts and Tips",
+      "url"      : "/blog/My_Tech_Diary/",
+      "date"     : "29 Oct 2019"
+    } ,
+  
+    {
       "title"    : "Deep Learning SOTA(3)",
       "category" : "Auto-EncoderDeep LearningMachine Learning",
       "tags"     : "Deep Learning and Machine Learning",

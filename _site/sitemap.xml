@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	
 	  <url>
+		<loc>http://localhost:4000/blog/My_Tech_Diary/</loc>
+	  </url>
+	
+	  <url>
 		<loc>http://localhost:4000/blog/DeepLearning_advanced(3)/</loc>
 	  </url>
 	

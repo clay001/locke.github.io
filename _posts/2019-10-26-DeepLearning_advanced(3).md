@@ -46,10 +46,14 @@ VAE以概率的方式描述潜在空间观察。因此，我们不再是输出�
 $$
 E_{q(z|x)}logp(x|z)- KL(q(z|x)||p(z))
 $$
+
+
 然后encoder的过程我们就用q来把输入的x映射到隐藏空间z中，decoder则用likelihood$p(x|z)$再映射回$\hat{x}$。写成损失函数的形式就是：
 $$
 \mathcal{L}(x,\hat{x}) + \sum_{j} KL(q_j(z|x) || p(z))
 $$
+
+
 其中j代表维度，前一项代表重构误差，后一项代表分布的差异程度。
 
 既然我们假设先验是符合正态分布的，那么我们可以构建如下的网络结构：
@@ -70,5 +74,6 @@ $$
 $$
 
 
-[本文参考yuxianyu的博客，原文链接如下：[http://www.atyun.com/17888.html](http://www.atyun.com/17888.html)]
+
+[本文参考[yuxianyu](http://www.atyun.com/17888.html)的博客]
 
