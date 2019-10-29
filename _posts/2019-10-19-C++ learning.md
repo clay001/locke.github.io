@@ -11,11 +11,15 @@ categories:
 twitter_text: 'Do you know these?'
 ---
 
+## Preface
+
+C++ is needed when you want to run fast and well-perfomed codes, and it can directly controll the hardware. In fact, when you write some codes, you need to pass it to the complier, and the complier can give you the machine code for your target platform, machine code is the actual instruction that your devices CPU will actual perform. C++ is widely used in almost everywhere, it can support almost all the platforms. Everyone is using it ! Here I record some of the learning notes, check whether you know them all.
+
 ## hpp和h的区别 
 
-hpp（Header Plus Plus）是将.cpp的实现代码混入.h头文件当中，定义与实现都包含在同一文件，调用的时候只需要include该hpp文件即可
+hpp（Header Plus Plus）是将.cpp的实现代码混入.h头文件当中，定义与实现都包含在同一文件，调用的时候只需要include该hpp文件即可 
 
-与xx.h类似，hpp是C++程序头文件。一般来说，xx.h里面只有声明，没有实现，而*.hpp里声明实现都有，后者可以减少.cpp的数量。xx.h里面可以有using namespace std，而*.hpp里则没有。
+与xx.h类似，hpp是C++程序头文件。一般来说，xx.h里面只有声明，没有实现，而*.hpp里声明实现都有，后者可以减少.cpp的数量。xx.h里面可以有using namespace std，而*.hpp里则没有
 
 但要注意的是，hpp中不可以包含全局对象和全局函数
 

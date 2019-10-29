@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Deep Learning SOTA(3)",
+      "category" : "Auto-EncoderDeep LearningMachine Learning",
+      "tags"     : "Deep Learning and Machine Learning",
+      "url"      : "/blog/DeepLearning_advanced(3)/",
+      "date"     : "26 Oct 2019"
+    } ,
+  
+    {
       "title"    : "Deep Learning SOTA(2)",
       "category" : "Reinforcement LearningDeep LearningMachine Learning",
       "tags"     : "Deep Learning and Machine Learning",

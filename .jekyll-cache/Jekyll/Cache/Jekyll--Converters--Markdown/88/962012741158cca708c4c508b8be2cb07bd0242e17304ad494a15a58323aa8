@@ -1,0 +1,17 @@
+I"�<h2 id="preface">Preface</h2>
+
+<p>C++ is needed when you want to run fast and well-perfomed codes, and it can directly controll the hardware. In fact, when you write some codes, you need to pass it to the complier, and the complier can give you the machine code for your target platform, machine code is the actual instruction that your devices CPU will actual perform. C++ is widely used in almost everywhere, it can support almost all the platforms. Everyone is using it ! Here I record some of the learning notes, check if you know them all.</p>
+
+<h2 id="hpp和h的区别">hpp和h的区别</h2>
+
+<p>hpp（Header Plus Plus）是将.cpp的实现代码混入.h头文件当中，定义与实现都包含在同一文件，调用的时候只需要include该hpp文件即可</p>
+
+<p>与xx.h类似，hpp是C++程序头文件。一般来说，xx.h里面只有声明，没有实现，而<em>.hpp里声明实现都有，后者可以减少.cpp的数量。xx.h里面可以有using namespace std，而</em>.hpp里则没有</p>
+
+<p>但要注意的是，hpp中不可以包含全局对象和全局函数</p>
+
+<h2 id="取余运算上的不同">取余运算上的不同</h2>
+
+<p>和python不同，在C++中 -1%10 的结果并不是9，而是-1。所以在我程序中碰到过的一个轮盘锁问题的时候，需要实现0负方向转动的结果是9，这时候就得再做一层操作，我当时的选择是如果是负数就用10去减一次</p>
+
+:ET
