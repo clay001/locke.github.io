@@ -126,6 +126,12 @@ SNE改变了MDS和ISOMAP中基于距离不变的思想，将高维映射到低�
 
 python的sklearn有相应的实现，但是速度有些慢，所以可以线性降维之后再用进行T-SNE。tensorflow也能实现这个算法，同时如果用GPU加速的话能进一步提速。
 
+## UMAP（Uniform Manifold Approximation and Projection）
+
+TSNE能避免集群表示的过度拥挤，在重叠区域上能表示出不同的集群。但它的局限性体现在丢失大规模信息(集群间关系)、计算时间较慢以及无法有效地表示非常大的数据集。
+
+UMAP是建立在黎曼几何和代数拓扑理论框架上的。UMAP是一种非常有效的可视化和可伸缩降维算法。在可视化质量方面，UMAP算法与t-SNE具有竞争优势，但是它保留了更多全局结构、具有优越的运行性能、更好的可扩展性。此外，UMAP对嵌入维数没有计算限制，这使得它可以作为机器学习的通用维数约简技术
+
 ## 我们为什么要降维？
 
 维度灾难，训练集的维度越高，我们就越容易过拟合，而且所需要保证效果的数据量也爆炸上升，而这是机器学习不愿意看到的。降维可以加快后续算法，去噪去冗余，压缩数据。
@@ -155,7 +161,7 @@ python的sklearn有相应的实现，但是速度有些慢，所以可以线性�
 
 ## Graph Laplacian
 
-就是在图论中频繁用到laplacian矩阵的一类问题
+就是在图论中频繁用到[laplacian矩阵](https://zhuanlan.zhihu.com/p/57544108)的一类问题
 
 连通分量：社交网络是一个无向图，假设用户是点，关系是边，Graph Laplacian可以用来找到里面的连通分量。先构建一个邻接矩阵W，再构建一个度矩阵D，即对角线上放该节点的度（邻居个数）。定义L = D - W。L值为 0 的 eigenvalue 的个数就是 connected component 的个数。
 
@@ -192,9 +198,13 @@ python的sklearn有相应的实现，但是速度有些慢，所以可以线性�
 ICA又称盲源分离(Blind source separation, BSS)，长得和PCA很像，但它是用来帮助从多个维度分离有用数据的过程。PCA是ICA的数据预处理的一部分。
 PCA认为主元之间彼此正交，样本呈高斯分布；ICA则不要求样本呈高斯分布。
 
+## Tensorflow的源码编译问题
 
+安装完tensorflow之后出现
 
+```python
+Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+```
 
-
-
+苹果的CPU比一般的CPU更加强大，他支持AVX（高级矢量拓展）。所以为了充分发挥苹果CPU的作用，可以从源编译Tensorflow。
 
