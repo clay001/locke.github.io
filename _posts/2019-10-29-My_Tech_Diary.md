@@ -236,5 +236,11 @@ Your CPU supports instructions that this TensorFlow binary was not compiled to u
 
 ## 提炼出时间序列的单细胞数据分析的一般流程
 
+上世纪50年代，胚胎发育生物学家Conrad Hal Waddington提出的发育景观假说认为，分化成熟的细胞变回多能干细胞是个不可能发生的事件。但是日本京都大学教授山中伸弥于2006年却发现并验证，这种细胞可以发育成为身体各种组织细胞。iPS细胞的发现成就了目前轰轰烈烈的干细胞研究领域，山中伸弥教授也因此获得2012年诺贝尔生理或医学奖。
 
+iPS (诱导多潜能干细胞)重编程实验的涌现使人们重新重视了上个世纪50年代胚胎发育生物学家Waddington提出的发育景观。虽然它只是一个隐喻,但其形象地描述了细胞的自发的层次分叉过程并隐含了细胞类型之间转换的可能性,从而作为一个整体框架最近被广泛应用来解释细胞发育和重编程。
+
+知乎里有一篇[详细文章](https://zhuanlan.zhihu.com/p/44913010)的说明
+
+10X表达数据 -> CellRanger -> R包Seurat-MeanVarPlot(滤掉在所有细胞表达没什么变化的基因) -> R包destiny-diffusion component embedding（降维）-> 分析维度，找到显著富集到发育过程的维度 -> R包FNN（fast-KNN）-> ForceAtlas2 （force-directed layout on KNN graph）->  Louvain-Jaccard community detection（聚类） -> Optimal Transport 算法(OT) -> 基因调控网络和基因表达模块分析 -> 其他算法比较
 
