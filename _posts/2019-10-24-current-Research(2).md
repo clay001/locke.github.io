@@ -44,6 +44,8 @@ Then use Sx and Ux to fit gamma to get the kinetic equations, plot the predict r
 
 ---------------------------------------------------------------------------------------------
 
+## Fundamental limits paper
+
 A short conclusion of Fundamental limits on dynamic inference from single-cell snapshots:
 
 Due to sequencing method constrains, we can only obtain single cell expression profiling in a snapshot way. However, the information of dynamics is extremely important. There are lots of methods trying to model the change of the continuous cell states, which have a common limit on the uniqueness of the solution. Thus, it needs to be identified some assumptions to constrain. What is more, the sparsity and high dimensionality of single cell data is an obstacle in front of us. This paper applied recent innovations in spectral graph theory to devise a simple and asymptotically exact algorithm for inferring the unique dynamic solution under defined approximations and apply it to data from bone marrow stem cells.
@@ -56,4 +58,7 @@ Due to sequencing method constrains, we can only obtain single cell expression p
 
 ​     Finally, we can see from the result part that there both exists strength and limitation, and the performance on hematopoietic progenitor cells is good. The rigorous basis for dynamic interpretation is quite solid and convincible, which brings me with great inspirations. 
 
- 
+### some interesting tools:
+
+1. [Spring](https://kleintools.hms.harvard.edu/tools/spring.html): KNN layout interface website
+2. [Immunological Genome Project](https://www.immgen.org): It is a collaborative scientific research project that is currently building a gene-expression database for all characterized immune cells in the mouse. The overarching goal of the project is to computationally reconstruct the gene regulatory network in immune cells.
