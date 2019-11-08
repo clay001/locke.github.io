@@ -17,7 +17,7 @@ twitter_text: 'New research progress of Locke!'
 
 It is related with brain memory. 
 
-The embedding was computed using [pagoda2](https://www.jianshu.com/p/f4d79b91d448) (pathway and gene set overdispersion analysis), which classifies cells based on known important signaling pathways to improve statistical effectiveness. The distance is determined as $1-r_{ij}$ (r is pearson linear correlation of cell i,j on the first 100 principle compoinents of the top 3000 variable genes). Cluster was performed using Louvain community detection algorithm on the nearest neighbor cell graph.
+The embedding was computed on the correlation similarity matrix using [pagoda2](https://www.jianshu.com/p/f4d79b91d448) (pathway and gene set overdispersion analysis), which classifies cells based on known important signaling pathways to improve statistical effectiveness. The distance is determined as $1-r_{ij}$ (r is pearson linear correlation of cell i,j on the first 100 principle compoinents of the top 3000 variable genes). Cluster was performed using Louvain community detection algorithm on the nearest neighbor cell graph.(k = 30)
 
 Explore with code: 
 
@@ -34,7 +34,7 @@ After KNN, we will get:
 - smoothed spliced
 - smoothed unspliced
 
-Then use Sx and Ux to fit gamma to get the kinetic equations, plot the predict result for checking. Calculate the transition probability (here I fixed a bug about the stacking), project the direction (figure with small arrows) and use regular grid and gaussian kernel to smooth (figure with big arrows). We can access these two things in **delta_embedding** and **flow** attribute.
+Then use Sx and Ux to fit gamma to get the kinetic equations, plot the predict result for checking. Calculate the transition probability (here I fixed a bug about the stacking), project the direction (figure with small arrows) and use regular grid and gaussian kernel to smooth (figure with big arrows). We can access these two things in **delta_embedding** and **flow_embedding** attribute. (flow_grid and flow)
 
 ![small_arrow](https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/Research(2)/small_arrow.png?raw=true)
 
