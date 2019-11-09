@@ -34,7 +34,7 @@ After KNN, we will get:
 - smoothed spliced
 - smoothed unspliced
 
-Then use Sx and Ux to fit gamma to get the kinetic equations, plot the predict result for checking. Calculate the transition probability (here I fixed a bug about the stacking), project the direction (figure with small arrows) and use regular grid and gaussian kernel to smooth (figure with big arrows). We can access these two things in **delta_embedding** and **flow_embedding** attribute. (flow_grid and flow)
+Then use Sx and Ux to fit gamma to get the kinetic equations, plot the predict result for checking. Calculate the transition probability (here I fixed a bug about the stacking), project the direction (figure with small arrows) and use regular grid and gaussian kernel to smooth (figure with big arrows). We can access these two things in **flow_embedding** and **delta_embedding** attribute. (flow_grid and flow)
 
 ![small_arrow](https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/Research(2)/small_arrow.png?raw=true)
 
