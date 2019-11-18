@@ -31,3 +31,7 @@ Well, stop thinking here, just keep going my way :)
 
 然后学到了枚举可以用1<<n，然后在for里用n>>i进行按位访问，这时候就用到了很多大佬很喜欢用的按位与&或者一些其他的操作了。
 
+## 双周赛+周赛+kick start的酸爽周末
+
+做题做上瘾，同时还能追追星，舒服，所以我又去啦
+
