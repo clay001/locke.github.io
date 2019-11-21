@@ -46,11 +46,23 @@ Ridge regression的后面一项是权重的二范数（高斯分布），lasso r
 
 神经元的激活在空间内可以理解为学得的w和真实的pattern之间的cos夹角，close enough的时候就激活
 
-单个神经元可以完成线性分类器的任务（所谓的线形，指的是假设集中的模型是线形的）
+单个神经元可以完成线性分类器的任务（所谓的线性，指的是假设集中的模型是线性的）
 
 感知机算法：
 
+![perceptron](https://github.com/clay001/blog/blob/gh-pages/_posts/posts_picture/SOTA(4)/perceptron.png?raw=true)
 
+数学上可以证明感知机错误的最大次数和数据个数无关，与到决策边界最近距离的平方成反比
+
+output的决策有赢者通吃，softmax function等计算方法
+
+线性多分类器的实现：
+
+- 感知机
+- Hinge Loss（SVM）
+- log loss and logistic regression
+
+## Lecture 3
 
 
 
