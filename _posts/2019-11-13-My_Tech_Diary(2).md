@@ -35,3 +35,7 @@ Well, stop thinking here, just keep going my way :)
 
 做题做上瘾，同时还能追追星，舒服，所以我又去啦
 
+## 164周赛
+
+这次真的福利，前三题都很简单，
+
