@@ -64,3 +64,7 @@ Adaboost：重点关注被错分的样本（弱分类器的线性组合）（或
 - Light-GBM    leaf-wise 又分为GOSS（Gradient based one side samping）和EFB ( exclusive feature bundling)
 - Cat-boosting: Category boosting
 
+## 医学图像处理
+
+
+
