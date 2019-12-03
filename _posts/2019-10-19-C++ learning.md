@@ -53,7 +53,11 @@ cin.getline(array,20) ，读一行，规则和上面的get差不多，但是如�
 
 &是按位与，｜是按位或，^是按位异或（不同时为1），～是按位取反，<<和>>是左右移位，值得注意的是他们在计算机中都是对原数的补码进行操作的，计算得到的结果再返回其补码对应的原码，所以正数的操作不受影响，但负数的操作就要特别注意了。
 
+## queue和pair
 
+用了queue的数据结构，里面塞入了一个pair<>的结构，定义语句写为`queue<pair<int,int>>  xxx;`queue.push()可以往里加元素，如果是加pair，就是`xxx.push({x,x})`，取出头元素用.front()，弹出头元素用.pop()
+
+pair结构的第一个元素值用pairname.first访问，第二个元素用pairname.second访问
 
 
 

@@ -243,6 +243,28 @@ random.sample (a , k)     取样, 不会重复
 
 语句中*代表解包的操作，如果后面跟一个列表，集合，元组，会将之为拆分为单个元素，如果字典用单\*号只会取出键。如果后面跟的是字符串，那么会把它拆成一个个字母。  **对应字典，解包后就变成a = 0， b= 1的格式
 
+## python中的队列
+
+import queue，有full，empty，put和get函数。 （qsize，clear,
+
+- d = Queue.Queue()遵循FIFO
+- LifoQueue.LifoQueue() 遵循LIFO
+- PriorityQueue.PriorityQueue()
+
+定义的时候括弧里可以定义队列的大小,不指定就是动态的
+
+上面涉及到了优先队列，它按照优先级出队，优先级的选择过程是用堆实现的，所以这里补充一下堆的知识，堆是用数组实现的二叉树，分为最大堆和最小堆 import heapq, heapq.heapify( listname )可以用O（N）的复杂度把列表转化为堆，一般heap[0]是最小的元素（最小堆）, heapq.heappop(heapname)可以弹出元素, heapq.heappush( L, xxx )用于插入元素。
+
+## collections
+
+这是一个内建的集合模块，里面有一些非常好用的功能
+
+- deque：list的访问很快，但是插入和删除很慢，deque是双向列表，能使得插入和删除都变得高效，栈和队列的功能都可以实现，因为它除了pop和push之外，还支持appendleft和popleft
+
+## 并查集回顾
+
+
+
 ## numpy库学习
 
 
