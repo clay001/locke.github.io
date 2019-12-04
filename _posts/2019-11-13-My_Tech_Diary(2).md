@@ -66,5 +66,9 @@ Adaboost：重点关注被错分的样本（弱分类器的线性组合）（或
 
 ## 医学图像处理
 
+https://zhuanlan.zhihu.com/p/68111445
+
+https://www.zhihu.com/people/zhangzhenren/posts
+
 
 

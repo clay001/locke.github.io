@@ -33,3 +33,5 @@ trying to embed in diffusion component through Scanpy or Pydiff ---> failed
 
 the chfiled parameter is select inbuilt examples, but we will have no exact solution.
 
+## Generalizing RNA velocity to transient cell statesthrough dynamical modeling
+
