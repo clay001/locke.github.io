@@ -21,6 +21,8 @@ twitter_text: 'Do you know these?'
 
 12-3: We are made of dreams, and dreams are made of us.
 
+12
+
 ## SQL
 
 SQL是用于访问和处理数据库的标准的计算机语言，常见的数据库有：MySQL, SQL server, Access, Oracle, Sybase, DB2

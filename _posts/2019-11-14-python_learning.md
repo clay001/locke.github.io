@@ -245,7 +245,7 @@ random.sample (a , k)     取样, 不会重复
 
 ## python中的队列
 
-import queue，有full，empty，put和get函数。 （qsize，clear,
+import queue，有full，empty，put和get函数。 （qsize，clear...)
 
 - d = Queue.Queue()遵循FIFO
 - LifoQueue.LifoQueue() 遵循LIFO
@@ -263,7 +263,24 @@ import queue，有full，empty，put和get函数。 （qsize，clear,
 
 ## 并查集回顾
 
+并查集是一种用来管理元素分组情况的数据结构，在查询两个元素是否属于同一组和合并两个元素所在组的操作上很方便。其实现也是用树结构实现的，查询的时候看元素的根节点是否一致。为了合并的时候树型结构尽可能地平衡，还需要记录一下每颗树的高度，在合并的时候从高度小的向高度大的连边，在查询的时候还可以把路径上的点都指向根节点来压缩路径。
 
+树的存储用字典实现，还需要编写一个find函数和一个union函数
+
+```python
+#不断地向上找根
+def find(x):
+	f.setdefault(x, x)  #当键不存在的时候才设置
+  if f[x] != x:
+  	f[x] = find(f[x])
+  return f[x]
+
+# x的根指向y的根,所以是把x连到y上，这个顺序很重要
+def union(x, y):
+	f[find(x)] = find(y)
+```
+
+这里插一句，在网格上遍历的时候可以按照网格的index值作为键值，因为遍历有顺序所以只需要合并一下该位置的左边和上边就可以了。
 
 ## numpy库学习
 
