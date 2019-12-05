@@ -21,13 +21,17 @@ twitter_text: 'Do you know these?'
 
 12-3: We are made of dreams, and dreams are made of us.
 
-12
+12-5: Funny, how just when you think life can't possibly get any worse it suddenly does.
 
 ## SQL
 
 SQL是用于访问和处理数据库的标准的计算机语言，常见的数据库有：MySQL, SQL server, Access, Oracle, Sybase, DB2
 
+https://www.runoob.com/sql/sql-tutorial.html
+
+https://www.zhihu.com/search?type=content&q=SQL
+
 ## 数据库基础知识
 
-
+https://blog.csdn.net/yutianzuijin/article/details/12243751
 

@@ -259,7 +259,15 @@ import queue，有full，empty，put和get函数。 （qsize，clear...)
 
 这是一个内建的集合模块，里面有一些非常好用的功能
 
+https://www.liaoxuefeng.com/wiki/1016959663602400/1017681679479008
+
 - deque：list的访问很快，但是插入和删除很慢，deque是双向列表，能使得插入和删除都变得高效，栈和队列的功能都可以实现，因为它除了pop和push之外，还支持appendleft和popleft
+
+- OrderedDict: 顾名思义，key是有序的，有序指的是保持插入顺序，用OrderedDict( [ ] )定义，里面是一个列表，列表里的键值对以元组的形式插入
+
+  在dict中，我们可以调用.items()来遍历元组对，有序字典是字典结构的一个子类，所以也继承有个功能，此外还可以用move_to_end(key)和popitem()来对键值对的位置和删除进行操作，里面有一个参数last非常重要，当last默认为True，就是LIFO的机制（栈），如果想要队列功能的话就应该把这个值设为False
+
+- Counter：初始化在无参数的情况下就是空类，还可以直接传入可迭代对象创建，字典创建和从等号连接的键值对创建。当访问键不存在的时候，返回0，否则返回它的频数。增加用update，减少用subtract，删除用del，elements()返回一个包含重复频数的键值的迭代器。most_common()返回一个按频数排序的列表，（）里可以传需要top N的数字
 
 ## 并查集回顾
 
@@ -284,7 +292,7 @@ def union(x, y):
 
 ## numpy库学习
 
-
+https://www.jianshu.com/p/92486844124a
 
 ## tensorflow 2.0
 
@@ -297,3 +305,7 @@ TF2.0的核心功能是Eager execution（动态图机制），移除`tf.get_vari
 ## Pytorch
 
 我觉得torch在使用上要更简单，而且基本上科研所有的需求torch现在已经都能满足够用了。在这里稍微记录一下pytorch学习中的一些过程
+
+https://www.manning.com/books/deep-learning-with-pytorch#toc
+
+https://livebook.manning.com/book/deep-learning-with-pytorch/chapter-1/v-10/
