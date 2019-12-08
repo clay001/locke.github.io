@@ -23,6 +23,8 @@ twitter_text: 'Do you know these?'
 
 12-5: Funny, how just when you think life can't possibly get any worse it suddenly does.
 
+12-6: 美丽的梭罗河/ 我为你歌唱 / 你的光荣历史 / 我永远记在心上 / 旱季来临 / 你轻轻流淌 / 雨季时波涛滚滚 / 你流向远方
+
 ## SQL
 
 SQL是用于访问和处理数据库的标准的计算机语言，常见的数据库有：MySQL, SQL server, Access, Oracle, Sybase, DB2
