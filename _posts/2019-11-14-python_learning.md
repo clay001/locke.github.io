@@ -23,6 +23,10 @@ In china like my school, even need every graduate student to publish a top class
 
 I think the reason is some of the Chinese professors do not deserve to be a professor, and the academic education orientation is wired, make the students wasting their time to struggle, but do not focus on student ability development.
 
+## 先说一个技巧
+
+在pycharm里的时候写代码，写完以后想把它统一的变成比较漂亮的形式的时候，可以用快捷键Ctrl+alt+L
+
 ## if \_\_name\_\_ = \_\_main\_\_是什么意思
 
 可以保证脚本在以模块导入的时候，不会自动执行最外层（函数定义以外）的代码
@@ -263,9 +267,9 @@ all函数用于判断是否可迭代对象是否全部都是（0，“”，Fals
 
 如果a是一个字符串，我们经常用的就是print( "out:" + a )
 
-还可以用%占位，print( "out:%s"%a ), 这时候即使a不是一个字符串，而是数字，列表也一样可以进行转换，但元组不行
+还可以用%占位，print( "out:%s" %a ), 这时候即使a不是一个字符串，而是数字，列表也一样可以进行转换，但元组不行
 
-这时候可以用一个更强的格式化输出，print( "out:{}".format( ) ), 更进一步，还可以控制输出的顺序，print( "out:{0}  b={1}".format(a,b) ) 或是print( "out:{0}  b={1}".format(*c) ) ， c可以是元组和列表和字符串，\*是解包的操作。如果是字典，则单星号解包的元素是key值，双星号解包的元素才是value值。在py3中，可以直接写成print( f"out:{a}  b={b}")来进行填充
+这时候可以用一个更强的格式化输出，print( "out:{}".format( xx ) ), 更进一步，还可以控制输出的顺序，print( "out:{0}  b={1}".format(a,b) ) 或是print( "out:{0}  b={1}".format(*c) ) ， c可以是元组和列表和字符串，\*是解包的操作。如果是字典，则单星号解包的元素是key值，双星号解包的元素才是value值。在py3中，可以直接写成print( f"out:{a}  b={b}")来进行填充
 
 其他格式的输出，比如整型，浮点数，%.2f两位小数，%5.2f 占位宽度，%-5.2f占位左对齐等等
 
@@ -352,13 +356,192 @@ class Hero:
     
     
 Arthur = Hero("盖哥","德玛西亚")
-Arthur.flash()    
+Arthur.flash()       #在调用方法的时候会自动把对象的指针传入
 print(Arthur.__dict__)  # 用于查看它所有的实例变量值
 ```
 
-## self参数
+## 类变量，实例变量和局部变量
 
+```python
+class Hero:
+    # 类变量
+    game = "hahaha"
+    
+Arthur = Hero() 
+print(Arthur.game)  
+# 此时对Arthur.game进行修改，只是改变了对象新建的实例变量
+# 实例变量用对象访问，类变量有被实例对象copy到实例变量一份，但想要访问最原始的类变量，还是要用类名进行访问
+# 局部变量是在类内的方法里定义的
+```
 
+## 实例方法，类方法，静态方法
+
+```python
+class Hero:
+    # 类变量
+    game = "hahaha"
+    
+    # 类方法
+    @classmethod
+    def heal(cls):
+        print(cls.game)
+    # 如果想在类方法中访问实例变量，只需要把实例传入即可
+    # def heal(cls,Arthur)
+    
+    # 静态方法，无默认的形参
+    @staticmethod
+    def ignit():
+        print("fire!")
+        # 如果需要使用类变量，直接用
+        print(Hero.game)
+        # 如需使用实例变量，需要传入实例变量的指针
+    
+Arthur = Hero() 
+# 类方法实例对象和类都能调用
+Authur.heal()    #Hero.heal()  
+# 静态方法也是对象和类都能调用
+Arthur.ignit()   #Hero.ignit()
+```
+
+总结：实例方法只能实例对象调用，其他两个方法类和对象都能调用，且三个方法都能实现对类变量和实例变量的调用
+
+## 继承
+
+把一个类中定义的属性和方法复用到另一个类中的过程就是继承
+
+继承后的类称为子类，或者派生类
+
+继承前的类称为父类，或者超类
+
+```python
+# 之前我们定义过Hero类
+# 现在我们可以直接继承它
+class AD(Hero):
+    slogen = "xxx"
+    def Q(self):
+        print("biu biu biu")
+ashe = AD()
+```
+
+## 继承中的构造函数
+
+如果子类没有重写init，会直接继承，如果重写了会以子类为准。也可以在子类中用Hero.\_\_init\_\_(self,参数)来调用，然后额外再做新初始化的添加。
+
+还可以在子类中用super( AD, self ).\_\_init\_\_(参数）来实现。super相当于向上寻找一个父类
+
+## 多继承
+
+如果是按照一步步划分的话可能会产生很多不必要的类，我们可以把各种限定类都事先定义好，然后在后续继承的时候，一次性多继承几个。这样很清晰，但是相应的也会多产生一些bug
+
+## 函数指针和闭包
+
+```python
+def temp(x,y):
+    def add():
+        print(x+y)
+    return add
+temp(4,2)()
+```
+
+为什么返回内层函数的函数指针，还能访问的到x和y呢？因为当内层函数调用了外层函数作用域中的变量时，外层函数调用结束后，将会把内层函数涉及到的变量“送”给内层函数以保证其正常运行，这就是所谓的闭包
+
+（闭包 = 函数块 + 创建它时的环境）
+
+## 装饰器
+
+在不改变函数内部代码的情况下，增添一些新的功能
+
+```python
+# 介绍一个嵌套函数的装饰器
+# 它可以用来给函数运行时间计时
+import time
+def out(fun):
+    def In():
+        start = time.perf_counter() #time.clock()
+        fun()
+        end = time.perf_counter() #time.clock()
+        print("函数运行时间为: " + str(end - start))
+    
+    return In
+
+def append():
+    a = []
+    for i in range(100000):
+        a.append("haha")
+
+# 把append函数闭包包装一下，返回一个函数指针
+append = out(append)
+append()
+```
+
+相当于append函数有自己的功能，但又不想把计时功能直接写进去，就另外写了一个装饰器，要用这个功能的时候用装饰器装饰一下。或者是当一百个函数都要计时的时候，就不用一个个加代码了，直接调用装饰器即可。
+
+为什么这里还用到了闭包嵌套In函数呢？这是为了不仅仅是实现计时的功能，而且是返回了一个新的加上计时功能的装饰后的函数指针
+
+python中还提供了一种非常方便的写法，append = out(append)这种装饰操作还可以直接用在append函数的定义上方写上@out（装饰器名）来替代
+
+## 装饰器的参数传递
+
+值得注意的是如果要装饰的函数有多个参数，也需要在装饰器中进行修改相应的传入操作。这时候联想到之前学过的*args, 我们可以把装饰器和需要装饰的函数都使用args来解决这个问题。
+
+装饰器也可以在@的时候传入参数，这时候需要考虑传入参数的接收问题，可以再在装饰器外面套一层定义一个形参来接收
+
+## 多个装饰器的执行顺序
+
+先@装饰器a  ，再@装饰器b，然后再是函数
+
+和套箱子📦是一个原理，每套一层就产生一个新的函数，所以修饰的时候是从下往上修饰（先b再a），调用的时候是先a再b
+
+## call魔法方法
+
+类和函数都是可调用对象，实例对象是不可调用对象，可以用callable（）来验证
+
+call魔法方法和init类似，可以让实例对象能够像函数一样加小括号可以调用
+
+`def __call__(self,*args,**kwargs):`
+
+## 类装饰器
+
+类装饰器也可以实现嵌套函数装饰器的效果, 通过实例化一个类来生成一个函数，类内有call转换为可调用对象
+
+```python
+import time
+class Caltime:
+    def __init__(self,fun):
+        self.fun_ = fun
+    
+    def __call__(self,*args,**kwargs):
+        start = time.perf_counter()
+        self.fun_(*args)
+        end = time.perf_counter()
+        print(f"函数的运行时间为: {str(end-start)}")
+
+@Caltime  # append = Caltime(append)
+def append():
+    a = []
+    for i in range(100000):
+        a.append("haha")    
+        
+append()
+```
+
+## 装饰类的装饰器
+
+之前说的两种方法是装饰器的实现，都是用来装饰函数的，那么类可以被装饰吗？
+
+```python
+# 当然可以
+def decorator(cls):
+    cls.name = "microsoft"
+    cls.slogen = "I am coming"
+    return cls
+
+@decorator
+class person:
+    pass
+
+person.name
+```
 
 ## 前置单下划线
 
@@ -372,7 +555,7 @@ print(Arthur.__dict__)  # 用于查看它所有的实例变量值
 
 类内如果用前置双下划线定义一个变量或者方法，那么这时候python内部会默认为其改变属性名称，如果想自己亲自看一下可以用dir(class_name)查看所有变量
 
-改变名称的作用有二，一是可以使属性变量或者方法私有，不会被派生类继承，仅能自己使用，二是可以避免派生类和父类属性名称的冲突
+改变名称的作用有二，一是可以使属性变量或者方法真正私有，不会被派生类继承，仅能自己使用，二是可以避免派生类和父类属性名称的冲突
 
 ## 前后置双下划线
 
@@ -386,11 +569,49 @@ repr函数和str函数类似，都是python内置的函数，都是转换为字�
 
 我们使用一个类的时候，假设为a object，使用print（a）的时候其实就是调用了\_\_repr\_\_的方法，如果没有特别进行编写的话会输出这个object的信息，如果进行编写了，可以输出你指定的字符串。（ps：在py3.6之后出现了f-string的格式化字符串方法，用{ }来提示需要被替换的内容）
 
-## 函数参数前的单* 和双**
+## abs函数
+
+这里扩展到复数范围就是取模的操作，一个数的复数的模等于实部和虚部的平方和再开方（调和平均），虚数用j来表示，如1+2j
+
+## 单下划线的用法
+
+可以表示丢弃不想要实际接收的变量
+
+## #coding=utf-8
+
+解释器会对代码中的每一行，包括注释都进行句法分析，所以不是只要带了#开头的就是注释，这里的作用是告诉解释器你用的编码方式，python2默认使用的是ascII编码，所以如果不加这个用中文的话就会报错，py3没有关系
+
+## 大数字中的单下划线
+
+不影响数字本身，只是增加代码的可读性，比如10_000_000这样
+
+如果想在输出的时候也是用下划线进行分割的话，可以用print("{:\_}".format(100000)), 如果是其他进制，比如16进制则用print("{:\_x}".format(0xFFFFFFFF)), 八进制{:_b} （十进制默认隔三位，其他隔4位）
+
+括号里的数字可以是任意进制，但必须格式规范，比如16进制用0x提示
+
+## 类型提示
+
+就是在定义函数的时候def flash(xxx ), 里面的参数如果不带类型提示的话，如果xxx我们计划它是一个布尔类型，但是我们传入的时候用字符型，那么即使字符的内容是False，也会被判断为真，这时候可以在参数后加上类型提示def flash(xxx:bool)，这只在编译器中会提示，并不能像C一样做到真正意义上的把控。
+
+返回值也可以提示,如def flash(xxx:bool)->int :
+
+## help函数
+
+查看文档，如果想要看某个函数的源代码，就用ctrl + 鼠标左键
+
+这个help输出的其实就是这个源代码前面的'''xxxx'''多行注释，因此如果要规范代码的话也可以这么去写（函数，类，模块都适用）
+
+## 单* 和双**
 
 在函数申明中出现*，起到打包的作用，变量会被重新打包成元组，**会打包成字典
 
 语句中*代表解包的操作，如果后面跟一个列表，集合，元组，会将之为拆分为单个元素，如果字典用单\*号只会取出键。如果后面跟的是字符串，那么会把它拆成一个个字母。  **对应字典，解包后就变成a = 0， b= 1的格式
+
+## 数组
+
+python中的如果用[ ]定义，定义出来的是一个列表，它和数组还是有一定区别的，列表可以支持不同类型的元素在一起，而数组不行，但数组是连续存储的，更加高效，内置方法则与list基本一致。
+
+想用数组可以用from array import array，a= array()，更强大的，可以用numpy中的ndarray（）
 
 ## python中的队列
 
