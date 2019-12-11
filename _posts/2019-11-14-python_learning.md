@@ -703,3 +703,5 @@ TF2.0的核心功能是Eager execution（动态图机制），移除`tf.get_vari
 https://www.manning.com/books/deep-learning-with-pytorch#toc
 
 https://livebook.manning.com/book/deep-learning-with-pytorch/chapter-1/v-10/
+
+s
