@@ -8,7 +8,7 @@ tags:
 - Numerical Analysis
 categories:
 - Course Review
-twitter_text: 'Follow me to study NA'
+twitter_text: 'Follow me to study NA' 
 ---
 
 ## Some words
