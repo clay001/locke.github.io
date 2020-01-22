@@ -24,5 +24,3 @@ The purpose of this blog post is to record some important core foundations while
 
 
 
-
-
