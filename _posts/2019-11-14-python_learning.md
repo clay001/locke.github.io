@@ -660,6 +660,16 @@ def union(x, y):
 
 这里插一句，在网格上遍历的时候可以按照网格的index值作为键值，因为遍历有顺序所以只需要合并一下该位置的左边和上边就可以了。
 
+## bisect模块
+
+之前提到过sort是在原位排序，bisect.insort(list, number)会在原位插入number保持有序的列表。bisect.bisect(list, number)不会直接改变列表，返回的是插入的位置（其中bisect_left和bisect_right，insort_left和insort_right是针对列表中有重复值的情况，分别使用左端插入和右端插入的原则）
+
+## remove函数
+
+list.remove(x)是用来删除元素用的
+
+
+
 ---------------------------------------------------------------
 
 ------
