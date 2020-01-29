@@ -714,4 +714,4 @@ https://www.manning.com/books/deep-learning-with-pytorch#toc
 
 https://livebook.manning.com/book/deep-learning-with-pytorch/chapter-1/v-10/
 
-xxx
+xx
