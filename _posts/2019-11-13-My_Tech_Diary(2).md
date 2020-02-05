@@ -82,7 +82,5 @@ https://www.zhihu.com/people/zhangzhenren/posts
 
 是计算机的运算核心和控制单元。包括运算逻辑部件，寄存器部件和控制器部件。
 
-
-
 ## 
 
