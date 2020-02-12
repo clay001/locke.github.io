@@ -23,7 +23,7 @@ In china like my school, even need every graduate student to publish a top class
 
 I think the reason is some of the Chinese professors do not deserve to be a professor, and the academic education orientation is wired, make the students wasting their time to struggle, but do not focus on student ability development.
 
-## 先说一个技巧
+## 先说一个技巧 
 
 在pycharm里的时候写代码，写完以后想把它统一的变成比较漂亮的形式的时候，可以用快捷键Ctrl+alt+L
 
