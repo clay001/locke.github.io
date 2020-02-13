@@ -25,7 +25,7 @@ I think the reason is some of the Chinese professors do not deserve to be a prof
 
 ## 先说一个技巧 
 
-在pycharm里的时候写代码，写完以后想把它统一的变成比较漂亮的形式的时候，可以用快捷键Ctrl+alt+L
+在pycharm里的时候写代码，写完以后想把它统一的变成比较漂亮的形式的时候，可以用快捷键Ctrl+alt+L 
 
 ## if \_\_name\_\_ = \_\_main\_\_是什么意思
 
