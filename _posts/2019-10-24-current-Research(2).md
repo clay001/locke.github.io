@@ -2,7 +2,7 @@
 layout: post
 title: "Current research(2)"
 date: 2019-10-24 23:42:22
-image: '/assets/img/'
+image: '/assets/img/' 
 description: 'My current research topic record'
 tags:
 - research 
