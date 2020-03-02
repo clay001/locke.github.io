@@ -11,7 +11,7 @@ categories:
 twitter_text: 'Do you know these?'
 ---
 
-## Everyday sentence
+## Everyday sentence 
 
 11-29: I don't like rasins. They used to be fat and jucy, and now they are twisted. They had their lives stolen. They taste sweet, but really they are humiliated grapes.
 
