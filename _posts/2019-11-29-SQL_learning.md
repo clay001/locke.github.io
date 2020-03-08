@@ -37,3 +37,24 @@ https://www.zhihu.com/search?type=content&q=SQL
 
 https://blog.csdn.net/yutianzuijin/article/details/12243751
 
+## Oracle数据库
+
+是目前世界上流行的关系数据库管理系统，一个基本任务是存储数据。物理存储结构是存储数据的纯文件，当CREATE DATABASE语句来创建一个新的数据库时，将创建数据文件，控制文件和联机重做日志文件。
+
+逻辑存储结构使用逻辑存储结构对磁盘空间使用情况进行精细控制。包括数据块，范围，段（分配用于存储用户对象的一组范围），表空间
+
+## SOCKET（套接字）
+
+两个跨计算机的进程要进行通讯的话需要通过网络对接起来，比如服务器程序需要绑定在本机的某个端口号上，套接字就是指代承载着走通讯的系统资源的标识。处于应用层和传输层之间
+
+## 数据库查找
+
+学生成绩离两门成绩大于80的学生名字
+
+```mysql
+Select S.name 
+From Student S
+GROUP BY S.name
+Having MIN(S.score)>= 80 and count(*)>=2
+```
+
