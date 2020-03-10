@@ -119,6 +119,18 @@ grep NullPointerException(或者字符串)  文件名字｜wc -l（按行统计�
 
 find /xxx/xx -name \*.log | wc -l   或者 ls /xxx/xx/\*.log | wc -l 
 
+## Clean Code
+
+统一的插件，模版，遵循比较主流的开发者规范（google和阿里）。主要的原则有去除重复代码，去掉过长的方法，去掉不必要的注释和main方法，合理设置变量和方法的属性，清除IDE提示的代码问题，使用稳定的第三方包进行简化等等
+
+## Bagging和boosting的区别
+
+bagging全称是boostrapping aggregation，是以采样为核心的，通重抽样来产生多个数据集，训练多个弱分类器来进行集成，针对预测任务就进行投票，回归任务就进行平均。比如随机森林，就是对行进行有放回的随机采样，列进行无放回的随机采样来有效降低过拟合现象。
+
+Boosting是通过迭代来更改每个样本的权重，典型的算法有adaboost,GBDT
+
+还有一种stacking的方法
+
 
 
  
