@@ -113,7 +113,13 @@ Neural Response Generation with Dynamic Vocabularies，北航和亚研院在2018
 11. t-SNE, 能够以非线性的方式保留数据本地和全局结构，最小化高维空间和低维空间的相似性条件概率。
 12. umap，运行时间更短，用k邻近的概念，用随机梯度下降来优化差距
 
-## Linux统计文件中字符串次数
+## Linux命令
+
+｜是管道符，grep -v 不显示匹配上的内容，-n 显示匹配上的内容
+
+du（disk use）显示每个文件和目录的磁盘使用空间，df（disk free）显示磁盘空间上可使用的磁盘空间
+
+统计文件中字符串次数：
 
 grep NullPointerException(或者字符串)  文件名字｜wc -l（按行统计）
 
@@ -122,6 +128,10 @@ find /xxx/xx -name \*.log | wc -l   或者 ls /xxx/xx/\*.log | wc -l
 ## Clean Code
 
 统一的插件，模版，遵循比较主流的开发者规范（google和阿里）。主要的原则有去除重复代码，去掉过长的方法，去掉不必要的注释和main方法，合理设置变量和方法的属性，清除IDE提示的代码问题，使用稳定的第三方包进行简化等等
+
+## 单例模式
+
+假如很多地方都需要使用配置文件的内容，会导致系统中存在多个AppConfig的实例对象，单例就是只有一个对象。
 
 ## Bagging和boosting的区别
 
