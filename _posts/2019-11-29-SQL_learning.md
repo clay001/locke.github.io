@@ -61,17 +61,26 @@ Having MIN(S.score)>= 80 and count(*)>=2
 ## 关系型数据库
 
 - Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
+- 表（Relationship），列（Attribute）被称为字段，行（Tuple）被称为记录
+- 优点：事务一致性，复杂查询，容易理解，使用方便，易于维护
+- 缺点：读写性能（容易死锁），表结构更新，高并发(硬盘IO问题)，海量数据
 
 ## 非关系型数据库 NOSQL(Not Only SQL)
 
 - NOSQL特点：
 
-- - 易扩展，数据之间没有关系的。
-  - 大数据量，高性能。高性能读写非常灵活的。
-  - 灵活的数据模型。不需要事先对存储数据建立字段。
-  - 高可用。
+- - 易扩展，数据之间没有关系的
+  - 大数据量，高性能。高性能读写非常灵活的
+  - 灵活的数据模型。不需要事先对存储数据建立字段
+  - 存储格式多，分布式存储成本低廉
 
 - NOSQL主要主流产品
 
 - - Redis、CouchDB、mongoDB、Cassandra。NOSQL中比较火的三个数据库Redis、Memchache、MongoDb。
+
+思想：以键值对存储，结构不固定，每个元组可以有不一样的字段。可以用来做缓存服务器
+
+## mysql中的char, varchar, text
+
+
 
