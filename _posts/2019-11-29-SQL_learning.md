@@ -80,7 +80,63 @@ Having MIN(S.score)>= 80 and count(*)>=2
 
 思想：以键值对存储，结构不固定，每个元组可以有不一样的字段。可以用来做缓存服务器
 
-## mysql中的char, varchar, text
+## 基本的概念
+
+excel和数据库就像移动硬盘和网盘，一张表有列名和记录数据的行，唯一的列属性称为主键，表之间通过列建立联结，数据库管理系统是来管理的软件，SQL是操纵数据库的工具
+
+navicat是mysql的客户端
+
+字符串：char，text，blob（二进制形式的文本数据）
+
+数字：整型，浮点型，decimal（更高精度）
+
+日期：date，datetime（日期加时间），timestamp（时间戳），time，year
+
+## 基本操作指令
+
+insert into <表名>(<列名1>,<列名2>,.....) vaules(<值1>,<值2>,.....) ;
+
+DDL（数据库定义语言）：create, drop, alter
+
+DML（数据操纵语言）: insert, delete, select, update
+
+DCL（数据控制语言）: commit, rollback, crant
+
+英文分号结尾，不区分大小写，输入法要是英文的
+
+## 查询
+
+Select <列名1>, <列名2>, ......
+
+from <表名>;
+
+as用于为列设置别名
+
+distinct用于删除重复的值
+
+列名不能加单引号
+
+查询条件：where 姓名 = "xxx"; 
+
+注释：-- 单行注释， /*  xxxx    */多行注释
+
+运算符：算术运算符（所有与空值进行运算的结果仍为空值）， 比较运算符， 逻辑运算符（not, and, between, or, in）
+
+模糊查询：like   
+
+```sql
+select *
+from student 
+where 姓名 like '李%'   /*以李开头       
+%李    以李结尾
+%李%   带李
+```
+
+王_, _表示任意1个字符
+
+
+
+
 
 
 
