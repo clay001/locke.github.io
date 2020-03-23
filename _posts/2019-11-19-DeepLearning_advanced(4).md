@@ -62,7 +62,23 @@ output的决策有赢者通吃，softmax function等计算方法
 - Hinge Loss（SVM）
 - log loss and logistic regression
 
-## Lecture 3
+## 强化学习在药物分子设计上的应用
+
+强化学习在基因组学上应用几乎没有，分子结构合成领域基于GAN和图网络的方法比较多。我看到[北卡罗来纳大学](https://advances.sciencemag.org/content/4/7/eaap7885)在18年中有一篇用强化学习做药物分子设计的文章。
+
+通过学习170万种已知生物活性分子化学结构词汇背后的句法和语言规则，创造出未出现过的新型分子。机器学习可以分为有监督，无监督和强化学习。强化学习三要素，reward，state和action。mode-free是在真实的环境中进行学习策略优化，不需要对环境进行建模，比如Q-learning，Sarsa，Policy gradients。model-based是在模拟的环境中学习，比如AlphaZero。
+
+Policy-based得到的reward是一个概率。Value-based得到的是reward的期望。
+
+DQN是用神经网络预测Q值的方法，policy gradients是建模连续的动作的策略选择方案，最大化衰减reward的累加期望
+
+ReLeaSE包含一个生成器和一个预测器。生成器由一个预训练的栈式GRU构成，输出新的SMILES字符传作为预测器的输入，预测器是一个单层的LSTM网络，计算出一个reward再反馈回去。
+
+用openChem toolkit进行预训练，预训练结果作为true label
+
+
+
+
 
 
 
