@@ -68,7 +68,7 @@ MYSQL提供了四种隔离级别：
 
 学生成绩离两门成绩大于80的学生名字
 
-```mysql
+```sql
 Select S.name 
 From Student S
 GROUP BY S.name

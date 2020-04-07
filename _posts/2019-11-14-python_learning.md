@@ -714,7 +714,7 @@ subn返回的是替换后的字符串和替换次数组成的一个元组
 
 re.match(pattern, string, flags=0)返回一个match object，是从头开始匹配的，用span函数可以返回一个（start，end）的元组。如果不是从头开始匹配，会返回None。flag是[标志位](https://www.runoob.com/python/python-reg-expressions.html#flags)：re.I表示忽略大小写，L表示特殊字符集，M表示多行模式等等
 
-pattern里用r‘ xxx ’写正则匹配，如matchObj = re.match( r'(.\*) are (.\*?) .\*', line, re.M|re.I)。括弧里是匹配的东西，group( )返回的是正则匹配到的全文，groups( )返回的是括号里匹配字符串组成的元组，括号里可以传入组的序号（从1开始）
+pattern里用r'xxx'写正则匹配，如matchObj = re.match( r'(.\*) are (.\*?) .\*', line, re.M\|re.I)。括弧里是匹配的东西，group( )返回的是正则匹配到的全文，groups( )返回的是括号里匹配字符串组成的元组，括号里可以传入组的序号（从1开始）
 
 re.search( )返回的是任意位置的第一个匹配
 

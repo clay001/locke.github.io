@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OS learning"
+title: "Algorithm learning"
 date: 2020-03-21 01:13:14
 image: '/assets/img/'
 description: 'Algorithm learning note'
