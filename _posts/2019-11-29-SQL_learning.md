@@ -151,7 +151,15 @@ where 姓名 like '李%'   /*以李开头
 
 王_, _表示任意1个字符
 
+## 实战经验
 
+select相当于一个建表的操作，ifnull函数里的第一个参数可以是一个括号括起来的select语句。
+
+函数的格式是Create function name（参数名字 参数类型）returns 参数类型。里面有begin和end，值设定语句要写在return外面，SQL语句写在return里面，语句结束都要有分号
+
+select里面还可以套select来得到新列的内容
+
+自连接（自身连接）的本质是把一张表复制出多张一模一样的表来使用
 
 
 

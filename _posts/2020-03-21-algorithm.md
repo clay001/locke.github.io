@@ -135,7 +135,45 @@ DFA（有限状态机），关键是建立一个状态跳转的表格，根据�
 
 在更新的时候判断当前末位置是否相等，然后注意下标和dp中下标的对应含义，很快就能写出代码来
 
+## python输入输出常用的函数
 
+sys.stdin.readline()不会把字符串末尾的/n去掉，所以一般后面会加上strip()函数，内参数是需要去除的东西，默认为空格，去两头。等效于input()，如果是整型之类的外面再强制转化一下就可以，如果字符串需要分割再转型，就用lines = line.split()割成列表，然后用lines = list(map(int, lines))
+
+多行输入和需要循环读入的时候：可以while True然后try except
+
+```python
+try:
+    while(True):
+        row = int(input())
+        lines_multrows = []
+        for n in range(row):    
+            line = input()
+            if line=='': # (if not line 也可以)
+                break
+        lines = line.split()
+        lines = list(map(int,lines))
+        lines_multrows.append(lines) #多行数组
+except:
+      pass
+```
+
+join函数也挺常用的，"用什么连接".join(seq_list)。输出的时候如果需要换行则直接循环print()，如果单行输出则使用print(xx, end = " ")
+
+%o八进制，%d十进制，%x十六进制
+
+%.3f，3位小数，f表示浮点形式输出，默认六位
+
+%e，科学计数法输出，默认六位
+
+字符串输出%10.2s，占位10右对齐，-10就是左对齐，点2还是取几位的意思
+
+更高阶的输出可以用format，"{} {}".format("","")，{}里可以带index或者关键字，还有很多新用法，不展开了
+
+## 旋转矩阵
+
+如果新开一个数组，找到角标之间的关系不难。如果要求原地，那么有两种方法，第一种推导的成分比较多一些，就是发现每4个循环又会回到原地，所以用一个tmp变量就可以把四个角换过来，再思考一下需要交换的元素循环起止位置（分奇偶的情况进行思考）。
+
+还有一种比较难理解，但是很容易写，顺时针旋转90度就相当于先上下翻转，然后沿顺对角线翻转
 
 
 
