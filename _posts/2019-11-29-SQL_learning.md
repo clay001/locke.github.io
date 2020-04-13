@@ -105,25 +105,29 @@ navicat是mysql的客户端
 
 字符串：char，text，blob（二进制形式的文本数据）
 
+（varchar是可变长度的字符串，其他两个字符串还有tiny,medium和long的版本）
+
 数字：整型，浮点型，decimal（更高精度）
+
+（int也有tiny，small，medium，big版，浮点型分为float和double）
 
 日期：date，datetime（日期加时间），timestamp（时间戳），time，year
 
 ## 基本操作指令
 
-insert into <表名>(<列名1>,<列名2>,.....) vaules(<值1>,<值2>,.....) ;
+插入数据：insert into <表名>(<列名1>,<列名2>,.....) vaules(<值1>,<值2>,.....) ;
 
-DDL（数据库定义语言）：create, drop, alter
+DDL（数据库定义语言）：create（创建）, drop（删除）, alter（修改）
 
-DML（数据操纵语言）: insert, delete, select, update
+DML（数据操纵语言）: insert（插入）, delete（删除）, select（查询）, update（修改）
 
-DCL（数据控制语言）: commit, rollback, crant
+DCL（数据控制语言）: commit（确认变更）, rollback（取消变更）, crant（赋予用户权限）
 
 英文分号结尾，不区分大小写，输入法要是英文的
 
 ## 查询
 
-Select <列名1>, <列名2>, ......
+Select <列名1>, <列名2>, ...... （\*号表示查询全部列）
 
 from <表名>;
 
@@ -133,11 +137,13 @@ distinct用于删除重复的值
 
 列名不能加单引号
 
-查询条件：where 姓名 = "xxx"; 
+查询条件：where 姓名 = "xxx";   （where里面不能带汇总函数）
 
 注释：-- 单行注释， /*  xxxx    */多行注释
 
 运算符：算术运算符（所有与空值进行运算的结果仍为空值）， 比较运算符， 逻辑运算符（not, and, between, or, in）
+
+eg. is not null
 
 模糊查询：like   
 
@@ -151,15 +157,119 @@ where 姓名 like '李%'   /*以李开头
 
 王_, _表示任意1个字符
 
+## 汇总分析
 
+函数：count求某列的行数，sum求列和，avg求列平均，max列最大值，min列最小值
+
+一般放在select语句里，表示查询对象是函数处理后的新表
+
+分组用goup by（如果有多个列的话，只有全部都相同才能分为一组）分组后筛选用having子句
+
+对查询结果排序用order by, asc表示升序，desc表示降序，如果有Null会被排到最前面
+
+limit返回一部分数据
+
+## 视图
+
+视图中存放的是sql查询语句，使用的时候会创建一张临时表
+
+语句是create view 视图名称（<列名1>, <列名2> ..... ） as
+
+后面跟上查询语句
+
+使用视图的时候直接把视图名字当成表名来使用即可
+
+视图里不能插入数据
+
+## 子查询
+
+是指在from里写定义视图的sql查询语句，子查询是最先运行的
+
+也可以结合in，all, any（some）放在where里面
+
+所以如果偶尔使用的话，就写成子查询的形式，如果是频繁地使用，就可以保存成视图来方便查询
+
+## 标量子查询
+
+子查询中使用汇总函数调用，使得返回值是一行一列的情况，这种时候还可以和between，and连用。而且甚至还可以写到selct语句里面
+
+## 关联子查询
+
+功能是在每个组里进行比较，在子查询中用where语句限定两个表之间的关联条件。比如where s1.xxx = s2.xxx.
+
+## 其他支持的一些函数
+
+round(数值，保留的位数)四舍五入
+
+abs绝对值
+
+mod求余数
+
+length求字符串长度
+
+lower,upper大小写转化
+
+replace(string, 原来的，想要替换成的)
+
+substring(string，开始位置，截取长度) 下标从1开始
+
+current_date当前日期，current_time, current_timestamp
+
+year对日期求年, month月, day日, daytime求星期
+
+## 表的加法
+
+Union连接查询语句，会删除重复数据
+
+union all保留重复的行
+
+## 联结
+
+关系数据表之间的连接
+
+交叉联结（笛卡尔积）：表中的每一行都与另外一个表中的每一行连接在一起，比如扑克牌中点数与花色的组合
+
+内联结： 查找出同时存在与两张表中的数据，先取出两张表中共同的key的数据，然后再进行交叉联结。写在from 子句中 inner join，on  a.xx = b.xx 这是用来选取主键的
+
+左联结： 取出左表中的全部key数据都取出来，再交叉联结，如果在右边的表里没有对应的数据的话，就会自动填null。left join（如果想要取出左边独有的部分的话，在左联结的基础上，在where中写b.xx = null就可以实现过滤了）
+
+右联结：right join同理
+
+全联结：full join，直接交叉联结，空值填null。mysql是不支持全联结的
+
+在应用的时候在selct语句中要指定列是来源于哪张表
+
+## case表达式
+
+实现分段人数统计，用括号括起来，后面还可以给列起别名
+
+case when <判断表达式> then <表达式>
+
+​         when ......
+
+​		else <表达式>
+
+end
+
+有一种用法很聪明，配合sum可以实现分条件计数
+
+```sql
+sum(case when xxx then 1 else 0) as "aaa"
+```
 
 ## 实战经验
 
-select相当于一个建表的操作，ifnull函数里的第一个参数可以是一个括号括起来的select语句。
+select相当于一个建表选择显示列的操作
+
+if函数接受三个参数，如果第一个参数为True，返回第二个参数，否则返回第三个参数
+
+ifnull函数接收两个参数，当第一个参数不是null的时候返回第一个参数，否则返回第二个，第一个参数也可以是一个括号括起来的select语句
+
+nullif函数，如果expr1 = expr2，返回null，否则返回expr1
+
+isnull函数，如果为null返回1，不是则返回0
 
 函数的格式是Create function name（参数名字 参数类型）returns 参数类型。里面有begin和end，值设定语句要写在return外面，SQL语句写在return里面，语句结束都要有分号
-
-select里面还可以套select来得到新列的内容
 
 自连接（自身连接）的本质是把一张表复制出多张一模一样的表来使用
 
