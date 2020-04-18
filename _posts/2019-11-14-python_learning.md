@@ -617,7 +617,7 @@ python中的如果用[ ]定义，定义出来的是一个列表，它和数组�
 
 import queue，有full，empty，put和get函数。 （qsize，clear...)
 
-- d = Queue.Queue()遵循FIFO
+- d = queue.Queue()遵循FIFO
 - LifoQueue.LifoQueue() 遵循LIFO
 - PriorityQueue.PriorityQueue()
 
@@ -724,15 +724,19 @@ subn返回的是替换后的字符串和替换次数组成的一个元组
 
 既然都说到这里了，就详细地整理一下正则表达式的一些用法
 
+- 反斜杠后边跟元字符去除特殊功能；（即将特殊字符转义成普通字符）
+- 反斜杠后边跟普通字符实现特殊功能；（即预定义字符）
+- 引用序号对应的字组所匹配的字符串。(从1开始计数)
+
 re.match(pattern, string, flags=0)返回一个match object，是从头开始匹配的，用span函数可以返回一个（start，end）的元组。如果不是从头开始匹配，会返回None。flag是[标志位](https://www.runoob.com/python/python-reg-expressions.html#flags)：re.I表示忽略大小写，L表示特殊字符集，M表示多行模式等等
 
-pattern里用r'xxx'写正则匹配，如matchObj = re.match( r'(.\*) are (.\*?) .\*', line, re.M\|re.I)。括弧里是匹配的东西，group( )返回的是正则匹配到的全文，groups( )返回的是括号里匹配字符串组成的元组，括号里可以传入组的序号（从1开始）
+pattern里用r'xxx'写正则匹配，如matchObj = re.match( r'(.\*) are (.\*?) .\*', line, re.M\|re.I)。括弧里是匹配的东西，group( )返回的是正则匹配到的全文，groups( )返回的是正则中被括号括出来的字符串组成的元组，group可以在括号里指定返回第几个括号的匹配
 
 re.search( )返回的是任意位置的第一个匹配
 
 '(?P<value>\d+)'表示匹配字母后的多个数字，并且给他们起了一个别名叫value
 
-re.compile()函数，用于便于正则表达式
+re.compile()函数，用于保存正则表达式
 
 findall( string, start, end)表示匹配所有
 
@@ -746,7 +750,9 @@ re.split( pattern，string, time) 表示按照什么和最大划分次数，patt
 
 前面的是贪婪匹配，后面的是非贪婪匹配
 
-*，+的字符默认是贪婪匹配模式，后面加？变成非贪婪模式
+\*，+的字符默认是贪婪匹配模式，后面加？变成非贪婪模式
+
+\*表示零次或多次，+表示1次或多次，？表示零次或一次
 
 贪婪模式倾向于最大长度匹配，非贪婪模式是只要有结果符合就行
 

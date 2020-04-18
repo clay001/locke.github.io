@@ -56,7 +56,7 @@ windows没有层次的概念，唯一类似于层次结构的是在创建进程�
 
 进行态，就绪态，阻塞态
 
-比如命令行cat chapter1 chapter2 chapter3 | grep tree。第一个进程是cat，将三个文件级联并输出，第二个进程是grep，它从输入中选择具有包含关键字tree的内容。
+比如命令行cat chapter1 chapter2 chapter3 \| grep tree。第一个进程是cat，将三个文件级联并输出，第二个进程是grep，它从输入中选择具有包含关键字tree的内容。
 
 ## 进程的实现
 
