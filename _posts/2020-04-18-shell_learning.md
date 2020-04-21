@@ -32,6 +32,8 @@ twitter_text: 'Do you know these?'
 
 shell 是操作系统的最外层。shell 合并编程语言以控制进程和文件，以及启动和控制其它程序，相当于一个命令行解释器，提供了一个面向Linux内核发送请求的系统级程序，也可以作为一种编程语言。Linux有很多种类的shell，用的最多就是Bourne Again Shell（Bash）
 
+Posix(表示可移植操作系统接口(Portable Operating System Interface of UNIX), 是IEEE为要在各种UNIX操作系统上运行软件，而定义API的一系列互相关联的标准的总称，其正式称呼为IEEE Std 1003。在正则语句中会用到grep -P , 或者用awk，gawk代替( 用这个的话正则里的东西前后要加/)
+
 ## 定义变量
 
 定义用等号(不能有空格)，调用用$号，unset用于取消变量
@@ -74,11 +76,122 @@ source命令相当于让其退出重新登录
 
 dirname 路径 可以取出目录，basename 路径 可以取出变量
 
-## Grep
+## 条件判断
+
+有三种表达方式，第一种是test，第二种是[ ]，第三种是[[ ]]。其中第二种和第三种在括号内左右都要留一个空格，第三种支持正则表达
+
+可以判断文件类型，判断文件权限，判断文件新旧，判断整数，判断字符串，多重条件判断
+
+符号;和&&和\|\|都可以用来分割命令或者表达式
+
+分号（;）完全不考虑前面的语句是否正确执行，都会执行;号后面的内容
+
+## 控制语句
+
+```shell
+if [ condition ];then    
+	command1 
+elif [ condition2 ];then
+  command2    
+else    
+	command3
+fi
+```
+
+## 循环语句
+
+```shell
+for variable in {list}  # or in a b c								do 										# for(( expr1;expr2;expr3 ))
+	command           
+	command        
+done
+# 一样有continue，break，return用exit替代
+
+while [ $i -le 100 ]
+do
+   let sum=$sum+$i
+   let i+=2
+done
+
+until [ $i -gt 10 ]
+do
+  echo $i
+  let i++
+done
+```
+
+## case语句
+
+```bash
+case var in          #定义变量;var代表是变量名
+	pattern 1)         #情况1;用 | 分割多个模式，相当于or
+    command1 
+    ;;               #两个分号代表命令结束
+pattern 2)
+    command2
+    ;;
+*)                  # 不满足以上情况，相当于else
+    command3
+    ;;
+esac                # 表示case语句结束
+```
+
+## 函数的定义与调用
+
+```shell
+function 函数名()
+{
+   函数体
+}
+# return默认返回函数中最后一个命令状态值，也可以给定参数值，范围是0-256之间。如果没有return命令，函数将返回最后一个指令的退出状态值。
+
+# 调用的时候可以当前命令行用名字直接调用
+# 也可以加到bashrc里
+# 也可以在脚本前面加上source ./filename.sh
+```
+
+## 应用
+
+ping -c次数 来判断当前主机和ip地址是否能ping通
+
+&>file 意思是把 标准输出 和 标准错误输出 都重定向到文件file中
+
+$?是根据命令行执行状态来判断真假
+
+ps可以查看进程的运行状态，pgrep以名称为依据从运行进程队列中查找进程，并显示查找到的进程id
+
+wget用来从指定的URL下载大文件。wget非常稳定，它在带宽很窄的情况下和不稳定网络中有很强的适应性，如果是由于网络的原因下载失败，wget会不断的尝试，直到整个文件下载完毕
+
+ curl利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载
+
+ elinks -dump 能实现一个纯文本界面的WWW浏览器，dump是参数，将HTML文档以纯文本的方式打印到标准输出设备
+
+id 用于判断一个用户是否存在
+
+uname -r 查看内核版本号
+
+rpm判断某软件是否安装
+
+echo $RANDOM  生成随机数
+
+## 行首单独的（-参数）
+
+-d 判断是否是一个目录
+-f 判断是否是一个文件
+-L 判断是否是一个软连接文件
+-e 判断文件是否存在
+
+## Linux三剑客之首：awk
+
+是一种编程语言，在linux/unix下对文本和数据进行细切分处理，最强大也最复杂
+
+## 三剑客：sed
+
+sed是Stream Editor（流编辑器）的缩写，简称流编辑器，用来处理文件的
+
+## 三剑客：Grep
 
 首先很感谢JY大佬
-
-Posix(表示可移植操作系统接口(Portable Operating System Interface of UNIX), 是IEEE为要在各种UNIX操作系统上运行软件，而定义API的一系列互相关联的标准的总称，其正式称呼为IEEE Std 1003。在正则语句中会用到grep -P , 或者用awk，gawk代替( 用这个的话正则里的东西前后要加/)
 
 grep是行过滤工具；用于根据关键字进行行过滤，命令用于查找文件里符合条件的字符串
 
@@ -96,7 +209,7 @@ OPTIONS:
     -C: 显示匹配行前后多少行
     -l：只列出匹配的文件名
     -L：列出不匹配的文件名
-    -e: 使用正则匹配
+    -e: 使用正则匹配     # 相当于egrep
     -E:使用扩展正则匹配
     ^key:以关键字开头
     key$:以关键字结尾
@@ -256,6 +369,8 @@ PaaS是平台即服务，给开发环境
 SaaS是软件即服务，给软件的使用权
 
 主流的部署也分为私有云，公有云和混合云
+
+## docker和k8s：占个坑
 
 
 
