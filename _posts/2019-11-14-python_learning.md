@@ -267,7 +267,7 @@ all函数用于判断是否可迭代对象是否全部都是（0，“”，Fals
 
 如果a是一个字符串，我们经常用的就是print( "out:" + a )
 
-还可以用%占位，print( "out:%s" %a ), 这时候即使a不是一个字符串，而是数字，列表也一样可以进行转换，但元组不行
+还可以用%占位，print( "out:%s" %a ), 这时候即使a不是一个字符串，而是数字，列表也一样可以进行转换，但元组不行。元组得写成%（a，）才可以。
 
 这时候可以用一个更强的格式化输出，print( "out:{}".format( xx ) ), 更进一步，还可以控制输出的顺序，print( "out:{0}  b={1}".format(a,b) ) 或是print( "out:{0}  b={1}".format(*c) ) ， c可以是元组和列表和字符串，\*是解包的操作。如果是字典，则单星号解包的元素是key值，双星号解包的元素才是value值。在py3中，可以直接写成print( f"out:{a}  b={b}")来进行填充
 
@@ -286,6 +286,10 @@ finally则是不论如何都会进入执行的语句
 在C++中用于释放动态分配的内存，内存释放后，该区域内存储的值也被删除
 
 但在python中，del关键字并不会去操纵内存，而只是删除了变量的引用，python中内存的释放是由garbabe center（GC）处理的，当某块内存的引用变为0的时候才会被当成垃圾被回收
+
+标记-清除机制：平时先按需分配，等到没有空闲内存的时候，从寄存器和程序栈上的引用出发，遍历以对象为节点，以引用为边构成的图，把所有可以访问到的对象打上标记，然后清扫一遍内存空间，把所有没有标记的对象释放
+
+分代技术：将系统中所有内存块根据其存活时间划分为不同的集合，每个集合就成为一个代，垃圾收集频率随着代的存活时间的增大而减小
 
 ## 解释性语言和编译型语言
 
@@ -447,9 +451,11 @@ temp(4,2)()
 
 （闭包 = 函数块 + 创建它时的环境）
 
+closure是函数式编程的重要语法结构，也是组织代码的结构，提高了代码的可重复使用性
+
 ## 装饰器
 
-在不改变函数内部代码的情况下，增添一些新的功能
+在不改变函数内部代码的情况下，为已经存在的对象增添一些新的功能。经常被用于有切面需求的场景（AOP），较为经典的场景有插入日志，性能测试，事务处理等。
 
 ```python
 # 介绍一个嵌套函数的装饰器
@@ -759,6 +765,125 @@ re.split( pattern，string, time) 表示按照什么和最大划分次数，patt
 ## 帮助查找python中的bug和进行静态分析的工具
 
 PyChecker，Pylint
+
+## 元类
+
+type除了查看变量类型之外，还可以用来创建一个元类，是class关键字在python幕后做的事情。像字符串，数字等对象，都是由str，int函数创建的，这些函数就是这些对象的类。元类就是创建类这种对象的东西，type是内建的元类
+
+在写类的时候，如果加上\_\_metaclass\_\_属性， 可以自定义类的元类，目的就是在创建类的时候自动改变类。可以通过函数来定义属性，也可以用class来做元类（改写\_\_new\_\_）
+
+在Django中ORM的创建中会用到元类，使用元类的编写很复杂但使用者可以非常简洁地调用API
+
+## 单例模式
+
+属于创建类型的一种常用的软件设计模式，通过单例模式的方法创建的类在当前进程中只有一个实例。new静态方法负责创建一个实例对象，返回后会自动调用init方法进行初始化。new方法主要是当继承一些不可变的class的时候，提供一个自定义的途径。
+
+实现的方式：
+
+1. 用模块的方式导入
+
+   ```python
+   # mysingleton.py
+   class My_Singleton(object):
+       def foo(self):
+           pass
+   
+   my_singleton = My_Singleton()
+   
+   # to use
+   from mysingleton import my_singleton
+   
+   my_singleton.foo()
+   ```
+
+   
+
+2. 用装饰器
+
+   ```python
+   def singleton(cls):
+     instances = {}
+     def getinstance(*args,**kwagrs):
+       if cls not in instances:
+       	instances[cls] = cls(*args,**kwagrs)
+       return instances[cls]
+     
+     return getinstance
+   
+   @singleton
+   class MyClass:
+     ...
+   ```
+
+   
+
+3. 共享属性，所有实例的dict指向同一个字典
+
+   ```python
+   class Borg(object):
+     _state = {}
+     def __new__(cls,*args,**kwargs):
+       ob = super(Borg,cls).__new__(cls,*args,**kwargs)
+       ob.__dict__ = cls._state
+       return ob
+    
+   class Myclass(Borg):
+     a = 1
+   ```
+
+   
+
+4. new方法，同时为了保证线程的安全，在内部加锁
+
+   ```python
+   class Singleton(object):
+       def __new__(cls, *args, **kw):
+           if not hasattr(cls, '_instance'):
+               orig = super(Singleton, cls)
+               cls._instance = orig.__new__(cls, *args, **kw)
+           return cls._instance
+   
+   class MyClass2(Singleton):
+       a = 1
+   ```
+
+5. 元类实现
+
+## 静态方法，类方法，实例方法
+
+实例方法只能通过实例来调用，静态方法和类方法都可以通过类直接调用。静态方法在定义的时候不用在参数里写上cls。
+
+由此引申出类变量和实例变量，类变量是可以在类的所有实例之间共享的值，实例变量是单独拥有的。如果类变量是可变对象，那么改变实例变量会影响类对象
+
+## 自省用法
+
+type(), dir(), getattr(), hasattr(), isinstance()
+
+## enumerate和items
+
+enumerate返回一对index和值，items返回字典类型的键值对。
+
+在函数里面可以被args和kwargs预先占位
+
+## 类重写绕过
+
+类的访问查找是从左到右深度优先，所以在有些重写过类内函数的时候有可能会在访问的时候依然访问到旧版本的方法
+
+## GIL线程全局锁
+
+Global interpreter lock, 限制一个核只能在同一时间运行一个线程，对于IO密集型任务，python多线程起到作用。但对于cpu密集型任务，python多线程占不到优势。
+
+## 协程
+
+是进程和线程的升级版，进程和线程都面临着内核态和用户态的切换问题，协程就是用户自己控制切换的实际，不需要陷入内核态，比如yield语句思想
+
+## read，readline和readlines
+
+read读取整个文件，readline读取下一行（使用生成器方法），readlines读取整个文件到一个列表里供我们遍历
+
+## range和xrange
+
+range生成的是列表，xrange生成的是生成器，不需要开辟内存空间，所以如果返回很大的时候xrange的性能更优一些
 
 ---------------------------------------------------------------
 
