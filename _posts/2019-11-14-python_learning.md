@@ -904,6 +904,10 @@ n & 0xffffffff 可以把负数转化为它的正数补码表示
 
 然后可以在递归函数上面使用@lru_cache(maxsize = 128) 装饰器，可以加快递归速度
 
+## assert断言
+
+可以用于在函数开始的时候检验传入参数的合法性，采用分句的方式单个断言。是Debug程序版本的起作用的宏，是一个调试程序时经常使用的宏，在程序运行时它计算括号内的表达式，如果表达式为FALSE (0), 程序将报告错误，并终止执行。如果表达式不为0，则继续执行后面的语句。这个宏通常原来判断程序中是否出现了明显非法的数据，如果出现了终止程序以免导致严重后果，同时也便于查找错误。
+
 ## Python 中的 classmethod 和 staticmethod 有什么具体用途
 
 
@@ -954,4 +958,3 @@ https://www.manning.com/books/deep-learning-with-pytorch#toc
 
 https://livebook.manning.com/book/deep-learning-with-pytorch/chapter-1/v-10/
 
-xx
