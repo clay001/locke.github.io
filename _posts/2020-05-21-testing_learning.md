@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Shell learning"
+title: "Testing learning"
 date: 2020-05-21 16:52:33
 image: '/assets/img/'
 description: 'Testing learning note'
@@ -22,5 +22,5 @@ When I think of you, I'm reminded of the beautiful plains of Iowa.The distance b
 >
 > 白盒与黑盒恰恰相反，这种方法是把测试对象看作一个打开的透明盒子。测试时，测试人员会利用程序内部的逻辑结构及有关信息，通过在不同点检查程序状态，检验程序中的每条通路是否都能按预定要求进行正确工作。
 
-
+## 通信网络基础
 
