@@ -13,7 +13,7 @@ twitter_text: 'Do you know these?'
 
 ## Preface
 
-Python is a very popular language, it is easy to learn and can make you get rid of  many annoying things. It is specifically suitable for data analysis, so it is widely used in research. However, lots of unscrupulous businessmen take advantage of this and offer many courses to teach python, and tell you that if you pay and take the lessons, which can give you a guarantee of high salary. I think is a waste of your money and mess up the supply-demand relationship in the market. Why? First you need to know about it, and then you will find the answer.
+Python is a very popular language, it is easy to learn and can make you get rid of  many annoying things. It is specifically suitable for data analysis, so it is widely used in research. However, lots of unscrupulous businessmen take advantage of this and offer many courses to teach python, and tell you that if you pay and take the lessons, which can give you a guarantee of high salary. I think is a waste of your money and mess up the supply-demand relationship in the market. Why? First you need to know about it, and then you will find the answer. 
 
 ## some complaints :p
 
