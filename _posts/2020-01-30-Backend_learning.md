@@ -145,4 +145,3 @@ Hive是数据仓库工具。Pig是大规模数据分析工具。Hbase是高可�
 这是google的一篇paper，很多任务可以拆分成三个阶段：Map, Shuffle, Reduce。
 
 map阶段每个计算机处理本机上的数据，然后shuffle按关键字汇总，然后reduce对每个关键字进行统计。
-
