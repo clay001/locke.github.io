@@ -20,6 +20,34 @@ This doc was originally established on 2020/04/28, now update to record my Inter
 
 Many thanks to Huang Junli, Bruce Wu and all the others group members.  (FYI: xiaolin coding)
 
+## 要求的能力
+
+业务问题转化能力，数据敏感度，逻辑推理能力，推动策略落地，基本分析工具。通过数据采集获取数据，通过报表呈现获取信息（有背景的数据），通过挖掘分析获得知识（呈现出规律的信息），最后走向智能（自动完成任务）
+
+我觉得比较重要的是分析方法论，实验设计分析，算法，沟通和spark/ hadoop等底层架构知识
+
+增长黑客理论，确定当前增长重点，比传统方法更强调敏捷和实验。针对impact价值，confidence成功率，easy上线成本。所有策略必须通过上线实验评估收益
+
+OSM模型：
+
+> Objective业务目标：业务目标是什么，用户诉求是什么，产品如何满足
+>
+> Strategy实现策略：为了提升这一目标所采取的策略是什么
+>
+> Measurement评估目标：追踪策略是否很好地满足了用户诉求
+
+CSCE准则:
+
+> Comlete完备性：通过数据体系能够对产品的经营状况一目了然
+>
+> Systemize系统性：数据体系可以粗略地定位到数据波动的原因
+>
+> Comply可执行性：数据体系是量化并可实现的
+>
+> Explain可解释性：容易被解释，容易被理解
+
+从体验产品开始，深入思考再结合数据指标提出问题->敏捷分析->实验验证->优化产品，不断重复这个循环
+
 ## Pandas的基础操作
 
 pd.read_csv('xxx.csv', names=new_columns, header=0)读取文件
@@ -35,6 +63,46 @@ df.sum()对列求和，sum(1)对行求和。df.apply( )对每个元素进行操�
 列扩充直接进行赋值，行扩充用df.append( )里面放一个列名对应的键值字典，index参数指定行名。
 
  df_b.join(df_a) 进行合并，如果索引不完全相同的话就只保留dfb的索引，缺失值用NaN填补。如果想合并并集就加上参数how='outer'
+
+## 清理无效数据
+
+```python
+df[df.isnull()]   # 空值正常显示，非空值NAN
+df[df.notnull()]  # 非空正常显示
+
+df.dropna()     #将所有含有nan项的row删除
+# 里面的axis参数0表示行，1表示列
+# thresh表示删除小于其的行
+df.dropna(how='ALL')       
+# how表示筛选条件，All表示全都是NAN
+
+df.fillna(0)   # 对NAN值填充0
+# {1:0, 2:0.5} 字典参数指定第几列及填充何数
+df.fillna(method='ffill')   
+# method参数指示在列方向上以前一个值作为值赋给NaN
+```
+
+astype函数可以为某一行或者列进行数据类型转化
+
+date_range函数用于生成固定频率的日期
+
+## Pandas理解
+
+刚开始我也是疲于记忆各种语句和函数，而且不知道哪些功能有了函数，但是这既然是个数据结构，最好的理解方法还是去体会作者的思想。pandas的DataFrame相当于一个矩阵块拼起来的积木
+
+.reset_index(drop=True, inplace=True)可以让index重新从零开始排列
+
+用索引查询的时候先列后行，也可以先访问列属性，然后再index查询，因为pd表中的数据是按列存储的，一列就是一个pd.Series
+
+.loc[ 行标签，列标签 ]，里面还支持切片
+
+.iloc[ 行索引，列索引]，同样支持切片
+
+.isin() 做判断，另外boolean也可以用于查询
+
+s= pd.Series( value list, index = index_list )，df["列名字"] = s 用来增加列
+
+drop([ 标签名 ], axis = ) 可以做到0删除行，1删除列
 
 ## Unicode和UTF-8的区别
 
@@ -285,4 +353,10 @@ session = DBSession()
 ```
 
 总结来说就是把表转化为类，把记录转化为对象，把字段转化为对象属性。不同的表对应不同的类，类间的关系可以通过relationship和ForeignKey来实现
+
+## python的log模块进行日志记录
+
+
+
+## Padle飞浆
 
