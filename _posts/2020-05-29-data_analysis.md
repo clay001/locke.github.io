@@ -309,7 +309,7 @@ SSL/TLS 协议基本流程：
 
 ## 数据库连接
 
-亲测在python3上最好用的是Pymysql, 先connect上（关闭用close() )，然后创建一个cursor对象
+在python3上已经改用Pymysql了, 先connect上（关闭用close() )，然后创建一个cursor对象
 
 在其上用execute("sql")方法执行查询语句
 
@@ -321,7 +321,7 @@ fetchall() 方法获取所有数据的列表，每条数据被包装成列表里
 >
 > 表更改：用 try:   cursor.execute(sql), db.commit()  except:   # 如果发生错误则回滚   db.rollback()
 
-除此之外，还有一些其他类似的方法，比如psycopg2，这是用于连接postgreSQL的。还有sqlalchemy的create_engine，用string中的Template方法把字符串转化为sql，再结合pd.read_sql_query和to_sql方法实现读取和更新
+除此之外，还有一些其他类似的方法，比如psycopg2，这是用于连接postgreSQL的，用法也是先connect上得到conn，然后conn再创建一个cursor，执行excute。还有sqlalchemy的create_engine，用string中的Template方法在sql字符串中插入变量，再结合pd.read_sql_query和to_sql方法实现读取和更新
 
 另外，在sqlalchemy中其实也可以绕过sql语句的部分，它作为一个ORM框架，可以把数据库表的一行记录与一个对象互相做自动转换，做法如下：
 
@@ -354,9 +354,61 @@ session = DBSession()
 
 总结来说就是把表转化为类，把记录转化为对象，把字段转化为对象属性。不同的表对应不同的类，类间的关系可以通过relationship和ForeignKey来实现
 
+## Template方法
+
+Template方法用（）包裹文字，\$符号记变量的名称，然后用substitute和safe_substitute方法传入字典进行替换，和print中的控制格式区别就在于不需要按序传参。safe方法在缺少参数的情况下也不会报错，而是会直接输出\$ + 变量名
+
+## 阶段性总结1：数据质量审查模块
+
+连接数据库，主要用的是sqlalchemy里的engine。我们的原始表存储在postgre中，客户提供的要求表在mysql中，我们处理之后的表也会输出到mysql中去。
+
+检查数据质量的时候碰到了一些问题，首先判断元素类型的时候可以用dtype函数进行查看。另外当索引序号不对齐的时候，或者说我们需要进行双条件查询的时候，我的程序中是先取出条件一的那一行，做法是用bool语句判断再取行，然后再用条件二取列，值得注意的是如果就这样取出的是一个object类型的块，我们要取元素需要再进行取行[ 0 ]。如果我们之前对数据已经进行过截取的话，我们为了保证index正确，可以对筛选后的结果进行index重排（.reset_index(drop=True, inplace=True)）
+
+## Pyecharts的使用
+
+
+
+## Plotly Express
+
+一个新的高级python可视化库，是plotly的高级封装，受Seaborn（matplotlib的升级）和ggplot2的启发，使用上更加简洁高效，不需要冗长的代码
+
+Dash是Plotly的开源框架，用于构建图表的分析应用程序和仪表盘进行前端展示
+
+## 阶段性总结2：数据融合模块
+
+pandas的merge函数可以做类似sql的join的事情，它按默认相同字段进行合并，并选取两个都有的。on参数指定合并字段，left\_on, right\_on参数指示不相同名字的字段，合并后会同时显示两个字段的列，所以需要删掉一行drop('xxx',axis=1)。how参数定义连接方式，inner，outer，left，right。
+
+pivot_table：
+
 ## python的log模块进行日志记录
 
+日志文件可以使我们知道程序运行的细节，如果用print语句的话，当程序写好运行的时候，我们要把他们删除，在程序比较复杂的时候，这个办法很低效。
+
+```python
+import logging
+# 在level中，我们可以通过改成logging.DEBUG来控制一些语句是否被输出
+# filename参数控制输出日志的路径
+# filemode参数指示直接写入还是追加写入
+# format控制输出的格式 format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S'
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+logger.info('Start reading database')
+# read database here
+records = {'john': 55, 'tom': 66}
+logger.debug('Records: %s', records)
+logger.info('Updating records ...')
+# update records here
+logger.info('Finish updating records')
+```
+
+logging模块是自带的，debug模式用于调试，info模式查看程序是否如预料进行，warn模式是预料之外的，但不影响程序运行，error和critical是比较严重的问题。默认的level是warn，所以debug和info的信息就不会被输出到日志里了。
+
+## 第三方库pysnooper
+
+一个更加好上手的调试工具，@pysnooper.snoop()函数就可以实现对函数的调试，不需要繁琐的配置。里面可以加入监听结果重定向的路径，也可以加变量，函数或者线程参数
+
+## Padle飞桨
 
 
-## Padle飞浆
 
