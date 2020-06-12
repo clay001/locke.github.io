@@ -410,5 +410,25 @@ logging模块是自带的，debug模式用于调试，info模式查看程序是�
 
 ## Padle飞桨
 
+## 阶段性总结3：五个场景的合并
+
+在pycharm中大家也许都会看到不同颜色的文件
+
+**灰色**：已经同步的文件
+**红色**：本地存在但是没有同步到仓库的文件。当添加到仓库时，此文件名变绿
+**蓝色**：表示文件有更改且未同步到仓库中
+
+别人修改了文件并且提交PUSH,你也修改了此文件但没有add和commit.然后你在pull时就会出现error
+
+如果你想放弃你的修改，那么git reset --hard master
+
+如果你不想放弃git stash贮存修改，然后git pull工作区恢复到最后一次提交的内容，git stash pop自动合并（但我实测好像也可以pull完以后commit + push）
+
+date_range生成时间序列的时候格式必须是规范的年份日期格式
+
+strptime可以实现timestamp到字符串的转化
+
+Df.round()可以直接实现保留小数
+
 
 
