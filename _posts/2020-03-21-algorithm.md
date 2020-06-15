@@ -472,3 +472,6 @@ https://mp.weixin.qq.com/s?__biz=MzI5NzIyMjQwNA==&mid=2247484453&idx=1&sn=de66ff
 
 等式方程的可满足性
 
+## 转变数组后最接近目标值的数组和
+
+找数字的题目应该想到用二分查找去做，

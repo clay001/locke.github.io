@@ -430,5 +430,11 @@ strptime可以实现timestamp到字符串的转化
 
 Df.round()可以直接实现保留小数
 
+## safari抽风
 
+选取“显示”>“文本编码”改成unicode就又可以快乐地玩耍啦
+
+## Wireshark的使用
+
+## token, cookie, session的理解
 
