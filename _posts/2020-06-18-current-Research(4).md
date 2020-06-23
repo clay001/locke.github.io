@@ -39,5 +39,7 @@ This project will provide/develop two numerical methods to make use of RNA veloc
 
 如何对分析工具进行系统的基准评估，是否能产生高质量的预期结果，是否能够稳健地应对高水平的测序噪音和技术误差，动态可拓展性等等
 
+## sklearn中的fit
 
+sklearn中的所有方法在使用前都要进行fit，它是一个适配安装的过程，然后tranform进行标准化，降维，归一化的操作。fit_transform就是结合了这两部的操作的一个简化函数。
 

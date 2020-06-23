@@ -484,9 +484,23 @@ https://mp.weixin.qq.com/s?__biz=MzI5NzIyMjQwNA==&mid=2247484453&idx=1&sn=de66ff
 
 ## 最佳观光组合
 
-没曾想这是一道智力题，控制变量的思想，把 i 和 j 变量分离进行考虑，进行同步的更新，实现线性时间扫描
+没曾想这是一道智力题，控制变量的思想，把 i 和 j 变量分离进行考虑，在扫描过程中不断更新answer和前置最大的 i位置，实现线性时间扫描
 
+## 进制问题
 
+二进制转十进制从低位到高位乘以底就可以了，十进制转二进制辗转相除，最后把结果倒着写。反转列表的时候可以用reversed返回一个迭代器，或者用sorted(a,cmp=None, key=None, reverse=True)，或者直接切片。
 
+进制转化也可以直接用函数，int(x, 2)函数实现二进制转十进制，{0:b}.format实现十进制转2进制
 
+模拟二进制加法的时候可以逢2进位，用carry标识。也可以用异或运算来实现（bin实现转2进制）\[ 2: \]去掉0b前缀
+
+```python
+def addBinary(self, a, b) -> str:
+        x, y = int(a, 2), int(b, 2)
+        while y:
+            answer = x ^ y
+            carry = (x & y) << 1
+            x, y = answer, carry
+        return bin(x)[2:]
+```
 
