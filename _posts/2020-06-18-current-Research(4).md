@@ -42,4 +42,3 @@ This project will provide/develop two numerical methods to make use of RNA veloc
 ## sklearn中的fit
 
 sklearn中的所有方法在使用前都要进行fit，它是一个适配安装的过程，然后tranform进行标准化，降维，归一化的操作。fit_transform就是结合了这两部的操作的一个简化函数。
-
