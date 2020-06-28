@@ -41,4 +41,67 @@ This project will provide/develop two numerical methods to make use of RNA veloc
 
 ## sklearn中的fit
 
-sklearn中的所有方法在使用前都要进行fit，它是一个适配安装的过程，然后tranform进行标准化，降维，归一化的操作。fit_transform就是结合了这两部的操作的一个简化函数。
+sklearn中的所有方法在使用前都要进行fit，它是一个适配安装的过程，然后tranform进行标准化，降维，归一化的操作。fit_transform就是结合了这两部的操作的一个简化函数
+
+## pd中的一些函数
+
+在归一化的需要把训练数据和测试数据合在一起做，但之后又要分开，这里可以用ID来进行区分，取出的时候可以用merge函数，实质是表连接，这里用左连接就可以
+
+mean函数求平均，sub做减法，div做除法，gt表示大于，abs求绝对值，mask函数把满足条件的筛除掉，where函数保留满足条件的（或者是用第二个参数替换掉），fillna函数替换掉NA值（method为ffill的时候用最后一个有效值去替换），to_csv保存为csv文件，drop函数扔掉特定的columns
+
+dummies函数可以把类别变量变成indicator的变量，align函数用指定的连接方法（inner或者outer）在他们的轴上对齐
+
+## sklearn的proprecess包
+
+Imputer函数可以设置缺失值类型，填充规则等。然后再用设置好的参数去fit和transform。
+
+PolynomialFeatures函数设置多项式构造特征的方法参数。然后同样需要fit和transform
+
+## KFold交叉验证
+
+平时我们会分成训练集和测试集（hold out留出法）来比避免在训练中出现过拟合的问题，但是小数据集上会浪费掉测试集的数据，所以用K折的方法来综合评判模型的性能
+
+通常我们在进行划分的时候会记录下较为优异的超参数，然后再以最优参数进行重新训练
+
+ShuffleSplit分隔函数是随机分隔。KFold().split(data) 会把数据分成train和valid两部分，里面有两部分数据的id。RepeatedKFold是多次K折。所谓留一法是满折时候的情况，有专门的函数LeaveOneOut，留P法的函数是leavePout，建议的K值是5或10。如果target的不均匀现象比较严重，可以在方法前面加上Stratified来修正。时间关联的数据有TimeSeriesSplit
+
+model上用到了XGBRegressor，fit部分verbose指示多少轮打印，early_stopping_rounds指示早停轮数，eval_set以元组列表的格式给出评判数据集和它的标签
+
+## Evaluate模型
+
+```python
+# MSE均方误差
+from sklearn.metrics import mean_squared_error 
+# MAE平方绝对误差
+from sklearn.metrics import mean_absolute_error 
+# R方
+from sklearn.metrics import r2_score
+# 准确率
+from sklearn.metrics import accuracy_score
+# 格式都是test，pred
+accuracy = accuracy_score(y_test,y_pred)
+print("accuarcy: %.2f%%" % (accuracy*100.0))
+```
+
+交叉验证模型的评估可以用 scores = cross_val_score( clf, iris.data, iris.target, cv=5, scoring='f1_macro')
+
+Cross_validate方法在scroing部分可以传入列表或者字典，返回的字典格式为dict_keys(['fit_time', 'score_time', 'test_score', 'train_score'])
+
+Cross_val_predict方法返回的是交叉验证之后的输出值
+
+## boots trapping自助法
+
+基本思想是对于含有m个样本的数据集D，有放回地采样m次，得到一个会有重复数据的集合作为训练集，没有采样到的样本作为测试集
+
+## XGboost和GBDT的区别
+
+GBDT中预测值是由所有弱分类器上的预测结果的加权求和，其中每个样本上的预测结果就是样本所在的叶子节点的均值。而XGB中的预测值是所有弱分类器上的叶子权重直接求和得到，计算叶子权重是一个复杂的过程
+
+## 调参日记
+
+max-depth是每棵决策树的最大深度，迭代次数
+
+
+
+
+
