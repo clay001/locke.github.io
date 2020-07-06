@@ -173,3 +173,27 @@ y = x ^ y;
 x = x ^ y;
 System.out.println(“交换后 ：” + x + “，“ + y);
 
+## 概念字典
+
+Java：一门语言
+
+J2EE：规范+概念+开发平台
+
+Servlet：服务器端的java程序
+
+JVM：java虚拟机
+
+JSP：在html代码中嵌入java代码所形成的动态网页文件，在运行的时候，被JSP引擎转化为Servelet（java文件），调用Java编译器编译成class文件，最后JVM解释执行
+
+Tomcat：JSP/Servelet的一个web容器，支持servelet规范，将JSP代码编译成JVM能够识别的java class
+
+MVC：是一种架构模式，把软件分为模型，视图和控制器三个基本部分
+
+Spring: 是java的一个应用框架，类似于tensorflow之于python
+
+SpringBoot：Spring的简化版
+
+Maven：一个字典，帮你管理jar包的依赖关系
+
+Nginx：一款轻量级的Web服务器、反向代理服务器
+
