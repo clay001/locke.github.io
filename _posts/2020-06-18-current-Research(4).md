@@ -113,25 +113,43 @@ xgboost的好处：
 
 ## GridSearchCV
 
-将需要遍历的参数定义为字典传入，n\_jobs是并行数，可以设置为-1与CPU和核数自动匹配。grid\_scores\_用于查看不同参数情况下的评价结果，best\_params_用于查看最佳结果的参数组合，best\_score\_提供最好评分。其他参数在命名和使用上都比较清晰
+将需要遍历的参数定义为字典传入，n\_jobs是并行数，可以设置为-1与CPU和核数自动匹配。grid\_scores\_用于查看不同参数情况下的评价结果，best\_params_用于查看最佳结果的参数组合，best\_score\_提供最好的模型分数
 
-## 调参日记
+版本更新之后grid\_scores\_被删除，用cv\_results\_代替
+
+其他参数在命名和使用上都比较清晰
+
+原理是把训练集分成十份，在每一个参数上做十次验证集测试取平均作为分数，最后选择评分最高的参数。最后用全优参数在全部训练集上训练一个新模型
+
+## xgboost调参日记
 
 ```python
 params = {
-    'booster': 'gbtree',
-    'objective': 'multi:softmax',  # 多分类的问题
-    'num_class': 10,               # 类别数，与 multisoftmax 并用
-    'gamma': 0.1,                  # 用于控制是否后剪枝的参数,越大越保守，一般0.1、0.2这样子。
-    'max_depth': 12,               # 构建树的深度，越大越容易过拟合
-    'lambda': 2,                   # 控制模型复杂度的权重值的L2正则化项参数，参数越大，模型越不容易过拟合。
-    'subsample': 0.7,              # 随机采样训练样本
-    'colsample_bytree': 0.7,       # 生成树时进行的列采样
+    ## general p
+    'booster': 'gbtree',           # gblinear基于            线性模型
+    'silent': 1,                   # 设置成1则没有运行信息输出，最好是设置为0
+    'nthread': 4,                  # cpu 线程数，设置为-1的时候使用所有的线程
+    
+     ## booster p
+    'n_estimators': 100,           # 生成的最大树的数目，也就是最大的迭代次数
+    'learning_rate':0.1,           # 学习率，每一步迭代的步长
+    'gamma': 0.1,                  # 节点分裂所需的最小损失函数下降值,越大越保守，表示节点越不容易分裂，一般0.1、0.2这样子
+    'subsample':1,                 # 对于每棵树随机采样的比例，值越大表示越容易过拟合
+    'colsample_bytree': 0.7,       # 对于每棵树的列采样比例
+    'colsample_bylevel': 1,        # 每棵树每次分裂的列采样比例
+    'max_depth': 8,                # 构建树的深度，越大越容易过拟合，一般为3-10。0代表没有限制
+    'max_delta_step': 0,           # 每棵树权重改变的最大步长，0表示不做限制，一般只有在样本极不平衡的时候才有用
+    'lambda': 2,                   # 控制模型复杂度的权重值的L2正则化项参数，参数越大，模型越不容易过拟合（ridge）
+    'alpha': 0,                    # 权重的L1正则(lasso)，高维度的时候使算法速度更快
+    'scale_pos_weight': 1,        # 在类别很不平衡的时候，把参数设定为正值可以使算法更快收敛，通常设置为负样本和正样本的比值
+  
+    ## task p
+    'objective': 'multi:softmax',  # reg:linear(线性回归)/ reg:logistic(逻辑回归)/ binary:logistic(二分类输出概率)/ binary:logitraw(二分类使出权重和数据乘积) / count:poisson(计数问题的泊松回归)/ multi:softmax(多分类)/ multi:softprob(多分类输出概率)
+    'num_class': 10,               # 类别数，在multisoftmax的时候使用
+    'eval_metric': rmse,           # rmse(均方根误差)/ mae(平均绝对值误差)/ logloss(负对数似然)/ error@t(二分错误率，t表示阈值)/ merror(多分类错误率)/ auc(曲线下面积)/ ndcg(Normalized Discounted Cumulative Gain), map(平均正确率)
+    ## 其他
     'min_child_weight': 3,
-    'silent': 1,                   # 设置成1则没有运行信息输出，最好是设置为0.
-    'eta': 0.007,                  # 如同学习率
-    'seed': 1000,
-    'nthread': 4,                  # cpu 线程数
+    'seed': 1000
 }
 
 训练完之后可以保存模型
@@ -141,13 +159,15 @@ dump model可以导出模型和特征映射
 - General parameters
   该参数参数控制在提升（boosting）过程中使用哪种booster，常用的booster有树模型（tree）和线性模型（linear model）
 - Booster parameters
-  这取决于使用哪种booster
+  这取决于使用哪种booster，调控模型的效果和计算代价
 - Task parameters
   控制学习的场景，例如在回归问题中会使用不同的参数控制排序
 
 算法的调优是一个从欠拟合到过拟合的过程，学习速率决定每一轮迭代训练集误差的下降速率，迭代轮数决定我们什么时候停止我们曲线的学习过程，所以有人建议这两个最后调。其他的参数重要性越高的越前调
 
 在xgboost中，最重要的是max-depth，默认值为6，这个参数是每棵决策树的最大深度，一般这个参数越大，每一次迭代训练集误差下降的越快，因为树深度越大，每一轮对训练集的拟合程度也就越高。因此首先看这个参数在什么时候交叉验证集误差的最小值低且稳定。之后调整subsample和colsample_bytree，这两个参数分别代表构建决策树时的行抽样和列抽样，一般取值范围为[0.5,1]。最后调学习速率和迭代轮数
+
+https://www.cnblogs.com/TimVerion/p/11436001.html里可以参考fit中eval\_set的用法和
 
 调参对于模型准确率的提高有一定的帮助，但这是有限的。最重要的还是要通过数据清洗，特征选择，特征融合，模型融合等手段来进行改进
 
@@ -192,6 +212,70 @@ LSTM代码https://blog.csdn.net/Muzi_Water/article/details/103921115
 嵌入法：在训练的过程中自动完成特征选择
 
 学生党建议造轮子，老油条可以使用的sklearn的feature\_selection模块
+
+## 光伏发电预测启示
+
+利用之前时段（2016-12-31 ---> 2018-1-1）的发电数据，预测未来两个月跨度的用户用电量。特征上有瞬时有功，瞬时无功，ABC相电流，ABC相电压，正向有功（预测项）。34万的数据量，正向有用功需要进行差分处理，对照一下数据的标签，删除多余的特征。刚开始需要把特征都沿着时间可视化一下观察一下总体分布，算平均值和标准差，用3法删除异常值，对每日的采集频数统计发现缺失值
+
+属性筛选的时候，构造了功率项，累计值，计算了相关性
+
+LoadData部分进行数据清洗
+
+> splitDataSet按用户类型进行数据划分
+>
+> reduceDataset根据属性相关性剔除无关特征，构造新的特征，按照前值补全方法处理缺失值
+>
+> loadDataset进行数据提取
+>
+> loadWeatherData进行外部天气数据提取
+>
+> normData进行归一化处理
+>
+> loadFutureWeatherData提取预测数据集的天气特征
+>
+> saveFile保存程序的中间文件
+
+PredictLabel部分执行训练和预测的过程
+
+> nn\_model为训练样本训练神经网络模型
+>
+> nn_model_weather用预测数据训练预测模型
+>
+> predictLabel用训练好的模型进行label预测
+>
+> predictDataFunc用训练好的模型进行属性预测
+>
+> concatCSV进行预测结果的拼接
+
+模型优化：选80%的数据训练10次，以MSE为标准优化模型参数，用预测集的MSE选择最终的模型
+
+预测过程：外部数据预测瞬时有用功，然后再用瞬时有用功预测日正向有用功的增量
+
+效果评估：K折评估两个模型，以及最终累加的准确率
+
+时间序列还可以选用LSTM，用一个门来确定信息的保留或舍弃，模型训练使用keras库，首先是确定为一个Sequential模型，然后add LSTM层，Dense代表的是输出的维度，因为只有一个维度，所以设置为1。损失函数使用的是mae，优化器使用的是adam
+
+https://mp.weixin.qq.com/s/Yix0xVp2SiqaAcuS6Q049g
+
+## 时间序列
+
+时间序列的分析和预测ARIMA（差分自回归移动平均模型）
+
+不同于截面数据，时间序列预测需要用过去的数据来预测未来的数据，我们还需要把预测数据集的特征和历史数据的特征做合并之后一起用于训练，时间滑窗来人为构造target，最后进行堆叠
+
+https://github.com/wepe/O2O-Coupon-Usage-Forecast
+
+## 多输出回归问题
+
+sklearn.multioutput中的MultiOutputRegressor可以接受分类器，将其包装成多输出的格式，其实就是对每一个target训练一个模型。但这样考虑的时候无法利用目标之间的相关度信息
+
+## RNA分析练习
+
+https://www.jianshu.com/p/bce19672879e
+
+https://www.jianshu.com/p/1e7acde1a318
+
+
 
 
 
