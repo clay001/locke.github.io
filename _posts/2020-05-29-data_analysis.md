@@ -115,7 +115,9 @@ drop([ 标签名 ], axis = ) 可以做到0删除行，1删除列
 
 tornado是使用python编写的一个强大的，可拓展的web服务器，是一个编写对HTTP请求响应的框架
 
-它是一个异步的服务器，可以用于减轻基于线程的服务器限制，当负载增加的时候，类似于Node.js, lighttpd, tornado这样的服务器使用协作的多任务方式进行优雅的拓展（挂起请求，等待资源就绪之后调用回调函数）
+大多数社交网络应用都需要实时更新状态，但长连接和推送请求会使线程池饱和，tornado是一个异步的服务器，可以用于减轻基于线程池的服务器限制
+
+当负载增加的时候，类似于Node.js, lighttpd, tornado这样的服务器使用协作的多任务方式进行优雅的拓展（挂起请求，等待资源就绪之后调用回调函数）
 
 ```python
 # 导入tornado的模块
@@ -189,6 +191,20 @@ if __name__ == "__main__":
 
 他们有一个重大区别： GET产生一个TCP数据包，POST产生两个TCP数据包。GET请求的时候，浏览器会把header和data一并发送出去，POST请求的时候浏览器先发送header，服务器响应100 continue，然后再发送data。但是有些浏览器会只发送一次，用GET代替POST优化网站性能
 
+## 与前端的交互
+
+在handler中的get，post函数里用render重定向到html文件，在主函数的app对象中用os.path模块设置template\_path告诉模版文件所在的路径。）
+
+html文件是模版文件，我们可以用Template和generate函数来试用，双花括号括起来的是占位符，占位符离除了可以放关键字参数，还可以放运算式，python表达式（用双%号包围逻辑语句），函数等
+
+```python
+from tornado.template import Template
+content = Template("<html><body><h1>{{ header }}</h1></body></html>")
+print(content.generate(header="Welcome!"))
+
+输出：<html><body><h1>Welcome!</h1></body></html>
+```
+
 ## 安全和幂等
 
 安全，指请求方法不会破坏服务器上的资源
@@ -199,7 +215,7 @@ if __name__ == "__main__":
 
 ## POSTMAN
 
-用来便捷测试web请求情况，其他多不多说了，提几句有关身份验证的东西
+用来便捷测试web请求情况，新建request然后填入域名和方法类型，在body里用form-data的形式传入参数，可以得到网站的反馈。其他多不多说了，提几句有关身份验证的东西
 
 一般分为四种，第一种是基础验证，直接把用户名和密码放在请求的header中；第二种Digest auth，复杂一些，生成authorization header；第三和第四种是OAuth 1.0，OAuth 2.0，不清楚
 
@@ -375,6 +391,8 @@ Template方法用（）包裹文字，\$符号记变量的名称，然后用subs
 Dash是Plotly的开源框架，用于构建图表的分析应用程序和仪表盘进行前端展示
 
 ## 阶段性总结2：数据融合模块
+
+化工区有很多系统的数据信息，我们需要设计不同的场景需求，对数据进行融合，从而把主题相关的数据从不同表中融合到一起
 
 pandas的merge函数可以做类似sql的join的事情，它按默认相同字段进行合并，并选取两个都有的。on参数指定合并字段，left\_on, right\_on参数指示不相同名字的字段，合并后会同时显示两个字段的列，所以需要删掉一行drop('xxx',axis=1)。how参数定义连接方式，inner，outer，left，right。
 
