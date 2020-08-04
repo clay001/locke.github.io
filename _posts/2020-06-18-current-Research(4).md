@@ -275,7 +275,13 @@ https://www.jianshu.com/p/bce19672879e
 
 https://www.jianshu.com/p/1e7acde1a318
 
+用到的语句：
 
+df.columns.get\_loc("pear") 找到某列名所在的列序号
+
+列是axis = 1的情况
+
+数组中寻找数字位置的时候用a.index(num)
 
 
 
