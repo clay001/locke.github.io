@@ -30,7 +30,7 @@ twitter_text: 'Do you know these?'
 
 机器只懂得01，能够把我们的代码翻译成机器语言，我们需要编译器（解释器）。代码语言可以分为编译型语言和解释型语言。编译型快，但跨平台性不好，所以底层开发或大型应用程序开发用编译型的比较多，服务器脚本和辅助接口用解释型。
 
-shell 是操作系统的最外层。shell 合并编程语言以控制进程和文件，以及启动和控制其它程序，相当于一个命令行解释器，提供了一个面向Linux内核发送请求的系统级程序，也可以作为一种编程语言。Linux有很多种类的shell，用的最多就是Bourne Again Shell（Bash）
+shell是一个程序，可以称之为壳程序，用于用户与操作系统进行交互。shell 合并编程语言以控制进程和文件，以及启动和控制其它程序，相当于一个命令行解释器，提供了一个面向Linux内核发送请求的系统级程序，也可以作为一种编程语言。Linux有很多种类的shell，用的最多就是Bourne Again Shell（Bash），类似的还有sh，csh，ksh，zsh
 
 Posix(表示可移植操作系统接口(Portable Operating System Interface of UNIX), 是IEEE为要在各种UNIX操作系统上运行软件，而定义API的一系列互相关联的标准的总称，其正式称呼为IEEE Std 1003。在正则语句中会用到grep -P , 或者用awk，gawk代替( 用这个的话正则里的东西前后要加/)
 
